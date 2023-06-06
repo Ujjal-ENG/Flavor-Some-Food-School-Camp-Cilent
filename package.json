@@ -10,13 +10,20 @@
         "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier"
     },
     "dependencies": {
+        "axios": "^1.4.0",
+        "firebase": "^9.22.1",
         "lint": "^0.8.19",
         "localforage": "^1.10.0",
         "match-sorter": "^6.3.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
+        "react-google-button": "^0.7.2",
+        "react-hook-form": "^7.44.3",
+        "react-icons": "^4.9.0",
+        "react-lottie": "^1.2.3",
         "react-router-dom": "^6.10.0",
-        "sort-by": "^1.2.0"
+        "sort-by": "^1.2.0",
+        "sweetalert2": "^11.7.11"
     },
     "devDependencies": {
         "@types/react": "^18.0.28",

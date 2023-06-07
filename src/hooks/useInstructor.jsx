@@ -7,15 +7,15 @@ const useInstructor = () => {
     const { userInfo, privateLoad } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
-    const { data: isAdmin, isLoading: isInstructorLoading } = useQuery({
+    const { data: isInstructor, isLoading: isInstructorLoading } = useQuery({
         queryKey: ['isInstructor', userInfo?.email],
         enabled: !!userInfo?.email && !!localStorage.getItem('token') && !privateLoad,
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/users/instructor/${userInfo?.email}`);
-            return data.admin;
+            return data.instructor;
         }
     });
-    return [isAdmin, isInstructorLoading];
+    return [isInstructor, isInstructorLoading];
 };
 
 export default useInstructor;

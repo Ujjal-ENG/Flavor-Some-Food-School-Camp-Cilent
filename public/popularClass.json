@@ -1,0 +1,112 @@
+{
+    "classes": [
+        {
+            "id": 1,
+            "image": "https://images.pexels.com/photos/6740687/pexels-photo-6740687.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Baking Basics",
+            "instructor": "John Doe",
+            "email": "john.doe@example.com",
+            "availableSeats": 5,
+            "price": 50
+        },
+        {
+            "id": 2,
+            "image": "https://images.pexels.com/photos/4748359/pexels-photo-4748359.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Culinary Arts",
+            "instructor": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "availableSeats": 0,
+            "price": 75
+        },
+        {
+            "id": 3,
+            "image": "https://images.pexels.com/photos/1040685/pexels-photo-1040685.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Healthy Cooking",
+            "instructor": "Michael Johnson",
+            "email": "michael.johnson@example.com",
+            "availableSeats": 5,
+            "price": 60
+        },
+        {
+            "id": 4,
+            "image": "https://images.pexels.com/photos/15923503/pexels-photo-15923503/free-photo-of-roasted-meat-with-sauce-served-on-a-cutting-board.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "International Cuisine",
+            "instructor": "Emily Davis",
+            "email": "emily.davis@example.com",
+            "availableSeats": 5,
+            "price": 90
+        },
+        {
+            "id": 5,
+            "image": "https://images.pexels.com/photos/15949773/pexels-photo-15949773/free-photo-of-photo-of-sushi-and-a-hand-pouring-soy-sauce.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Sushi Making",
+            "instructor": "Jessica Lee",
+            "email": "jessica.lee@example.com",
+            "availableSeats": 0,
+            "price": 70
+        },
+        {
+            "id": 6,
+            "image": "https://images.pexels.com/photos/1482803/pexels-photo-1482803.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Mastering BBQ",
+            "instructor": "Robert Thompson",
+            "email": "robert.thompson@example.com",
+            "availableSeats": 5,
+            "price": 80
+        },
+        {
+            "id": 7,
+            "image": "https://images.pexels.com/photos/6823449/pexels-photo-6823449.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Decadent Desserts",
+            "instructor": "Sophia Anderson",
+            "email": "sophia.anderson@example.com",
+            "availableSeats": 0,
+            "price": 65
+        },
+        {
+            "id": 8,
+            "image": "https://images.pexels.com/photos/6469756/pexels-photo-6469756.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Vegan Cooking 101",
+            "instructor": "David Wilson",
+            "email": "david.wilson@example.com",
+            "availableSeats": 0,
+            "price": 55
+        },
+        {
+            "id": 9,
+            "image": "https://images.pexels.com/photos/1438672/pexels-photo-1438672.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Pasta Perfection",
+            "instructor": "Olivia Martinez",
+            "email": "olivia.martinez@example.com",
+            "availableSeats": 5,
+            "price": 70
+        },
+        {
+            "id": 10,
+            "image": "https://images.pexels.com/photos/6517986/pexels-photo-6517986.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Cake Decorating Masterclass",
+            "instructor": "Daniel Brown",
+            "email": "daniel.brown@example.com",
+            "availableSeats": 0,
+            "price": 75
+        },
+        {
+            "id": 11,
+            "image": "https://images.pexels.com/photos/16970301/pexels-photo-16970301/free-photo-of-picnic-in-autumn.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Artisan Bread Baking",
+            "instructor": "Sophie Johnson",
+            "email": "sophie.johnson@example.com",
+            "availableSeats": 5,
+            "price": 60
+        },
+        {
+            "id": 12,
+            "image": "https://images.pexels.com/photos/4057736/pexels-photo-4057736.jpeg?auto=compress&cs=tinysrgb&w=300",
+            "name": "Authentic Italian Cuisine",
+            "instructor": "Antonio Rossi",
+            "email": "antonio.rossi@example.com",
+            "availableSeats": 0,
+            "price": 90
+        }
+    ]
+}

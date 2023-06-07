@@ -4,7 +4,7 @@ import useAuth from './useAuth';
 import useAxiosSecure from './useAxiosSecure';
 
 const useStudent = () => {
-    const [userInfo, privateLoad] = useAuth();
+    const { userInfo, privateLoad } = useAuth();
     const [axiosSecure] = useAxiosSecure();
 
     const { data: isStudent, isLoading: isStudentLoading } = useQuery({

@@ -35,7 +35,7 @@ const Navbar = () => {
                     </label>
                     <ul tabIndex={0} className="mt-3 md:flex justify-center items-center hidden  shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
                         <li>
-                            <Link to="/dashboard/user-home" className="justify-between text-center btn btn-block">
+                            <Link to="/dashboard/my-selected-classes" className="justify-between text-center btn btn-block">
                                 Dashboard
                             </Link>
                         </li>

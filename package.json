@@ -11,6 +11,7 @@
         "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier"
     },
     "dependencies": {
+        "@tanstack/react-query": "^4.29.12",
         "axios": "^1.4.0",
         "firebase": "^9.22.1",
         "framer-motion": "^10.12.16",
@@ -29,6 +30,7 @@
         "swiper": "^9.3.2"
     },
     "devDependencies": {
+        "@tanstack/eslint-plugin-query": "^4.29.9",
         "@types/react": "^18.0.28",
         "@types/react-dom": "^18.0.11",
         "@vitejs/plugin-react": "^3.1.0",

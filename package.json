@@ -1,8 +1,9 @@
 {
-    "name": "my-react-template",
+    "name": "Flavorsome-Food-School-Camp",
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "description": "this is client site of Flavorsome Food School Camp",
     "scripts": {
         "dev": "vite",
         "build": "vite build",
@@ -31,6 +32,7 @@
         "@vitejs/plugin-react": "^3.1.0",
         "autoprefixer": "^10.4.14",
         "babel-eslint": "^10.1.0",
+        "daisyui": "^3.0.3",
         "eslint": "8.2.0",
         "eslint-config-airbnb": "19.0.4",
         "eslint-config-prettier": "^8.8.0",

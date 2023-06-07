@@ -15,20 +15,24 @@ import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
 import Lottie from 'react-lottie';
 import { Link } from 'react-router-dom';
 import animationData from '../../../assets/json/registration.json';
-import useAuth from '../../../hooks/useAuth';
 
 function Register() {
-    const { createUser } = useAuth();
+    const [passwordShow, setPasswordShow] = useState(false);
+    const [passwordShow2, setPasswordShow2] = useState(false);
+    // const { createUser } = useContext(AuthContext);
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
+        watch,
+        getValues
     } = useForm();
-    const [passwordShow, setPasswordShow] = useState(false);
-
+    const password = watch('password');
+    const confirmPassword = watch('confirmPassword');
+    console.log(password);
     const onSubmit = (data) => {
-        const { name, photoUrl, email, password } = data;
-        createUser(name, photoUrl, email, password);
+        // createUser(data.name, data.photoUrl, data.email, data.password);
+        console.log(data);
     };
 
     const defaultOptions = {
@@ -42,7 +46,7 @@ function Register() {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 my-container gap-7">
-            <div className="min-h-screen shadow-xl  duration-200 transition-shadow ease-in-out  hover:shadow-2xl  flex justify-center items-center order-2 md:order-1">
+            <div className="min-h-screen shadow-xl duration-200 transition-shadow ease-in-out hover:shadow-2xl flex justify-center items-center order-2 md:order-1">
                 <div className="max-w-xl w-full mx-auto">
                     <div className="text-center font-bold text-gray-700 text-3xl mb-6">Sign up</div>
                     <form onSubmit={handleSubmit(onSubmit)} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
@@ -93,9 +97,13 @@ function Register() {
                                 <input
                                     className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                     id="password"
-                                    type={`${passwordShow ? 'text' : 'password'}`}
+                                    type={passwordShow ? 'text' : 'password'}
                                     placeholder="Your password"
-                                    {...register('password', { required: true })}
+                                    {...register('password', {
+                                        required: true,
+                                        minLength: 6,
+                                        pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/
+                                    })}
                                 />
                                 {!passwordShow ? (
                                     <AiFillEyeInvisible className="absolute text-3xl right-4 top-1 cursor-pointer" onClick={() => setPasswordShow(!passwordShow)} />
@@ -103,7 +111,37 @@ function Register() {
                                     <AiFillEye className="absolute text-3xl right-4 top-1 cursor-pointer" onClick={() => setPasswordShow(!passwordShow)} />
                                 )}
                             </div>
-                            {errors.password && <p className="text-sm text-red-600 mt-1">Password is required</p>}
+                            {errors.password && (
+                                <p className="text-sm text-red-600 mt-1">
+                                    Password must be at least 6 characters and contain at least one uppercase letter, one lowercase letter, one digit, and one special character
+                                </p>
+                            )}
+                        </div>
+                        <div className="mb-4">
+                            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="confirmPassword">
+                                Confirm Password
+                            </label>
+                            <div className="relative">
+                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                    <FaLock className="h-6 w-6 text-gray-400" />
+                                </div>
+                                <input
+                                    className="shadow appearance-none border rounded w-full py-2 pl-10 pr-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                    id="confirmPassword"
+                                    type={passwordShow2 ? 'text' : 'password'}
+                                    placeholder="Confirm your password"
+                                    {...register('confirmPassword', {
+                                        required: true,
+                                        validate: (value) => value === getValues('password') || 'Passwords do not match'
+                                    })}
+                                />
+                                {!passwordShow2 ? (
+                                    <AiFillEyeInvisible className="absolute text-3xl right-4 top-1 cursor-pointer" onClick={() => setPasswordShow2(!passwordShow2)} />
+                                ) : (
+                                    <AiFillEye className="absolute text-3xl right-4 top-1 cursor-pointer" onClick={() => setPasswordShow2(!passwordShow2)} />
+                                )}
+                            </div>
+                            {errors.confirmPassword && <p className="text-sm text-red-600 mt-1">{errors.confirmPassword.message}</p>}
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="photoUrl">
@@ -124,7 +162,7 @@ function Register() {
                             {errors.photoUrl && <p className="text-sm text-red-600 mt-1">Photo URL is required</p>}
                         </div>
                         <div className="flex items-center justify-center">
-                            <button className="btn btn-primary w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            <button className="btn btn-primary  w-full text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                 Sign up
                             </button>
                         </div>
@@ -137,8 +175,8 @@ function Register() {
                     </div>
                 </div>
             </div>
-            <div>
-                <Lottie options={defaultOptions} className="w-full md:max-w-3xl" />
+            <div className="bg-gray-100 order-1 md:order-2">
+                <Lottie options={defaultOptions} height={400} width={400} />
             </div>
         </div>
     );

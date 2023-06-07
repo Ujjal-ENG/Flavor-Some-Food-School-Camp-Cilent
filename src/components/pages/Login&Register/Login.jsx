@@ -16,10 +16,9 @@ import { FaEnvelope, FaLock } from 'react-icons/fa';
 import Lottie from 'react-lottie';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import animationData from '../../../assets/json/login.json';
-import useAuth from '../../../hooks/useAuth';
 
 function Login() {
-    const { signInUser, singInGoogle } = useAuth();
+    // const { signInUser, singInGoogle } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '';
@@ -28,13 +27,13 @@ function Login() {
 
     const onSubmit = (data) => {
         const { email, password } = data;
-        signInUser(email, password);
-        navigate(from);
+        // signInUser(email, password);
+        // navigate(from);
     };
 
     const handleGoogleSignIn = () => {
-        singInGoogle();
-        navigate(from);
+        // singInGoogle();
+        // navigate(from);
     };
 
     const defaultOptions = {
@@ -73,7 +72,7 @@ function Login() {
                                             type="email"
                                             autoComplete="email"
                                             {...register('email', { required: true })}
-                                            className="block w-full pl-10  sm:text-sm border-gray-300 rounded-md input input-bordered input-primary"
+                                            className="block w-full pl-10 py-5 sm:text-sm border-gray-400  rounded-md input input-bordered input-primary"
                                         />
                                     </div>
                                 </div>
@@ -94,12 +93,12 @@ function Login() {
                                             type={passwordShow ? 'text' : 'password'}
                                             autoComplete="current-password"
                                             {...register('password', { required: true })}
-                                            className="input input-bordered input-primary   block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                                            className="input input-bordered input-primary   block w-full pl-10 py-5 sm:text-sm border-gray-300 rounded-md"
                                         />
                                         {!passwordShow ? (
-                                            <AiFillEyeInvisible className="absolute text-3xl right-4 top-2 cursor-pointer" onClick={() => setPasswordShow(!passwordShow)} />
+                                            <AiFillEyeInvisible className="absolute text-3xl right-4 top-3 cursor-pointer" onClick={() => setPasswordShow(!passwordShow)} />
                                         ) : (
-                                            <AiFillEye className="absolute text-3xl right-4 top-2 cursor-pointer" onClick={() => setPasswordShow(!passwordShow)} />
+                                            <AiFillEye className="absolute text-3xl right-4 top-3 cursor-pointer" onClick={() => setPasswordShow(!passwordShow)} />
                                         )}
                                     </div>
                                 </div>

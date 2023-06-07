@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
+import 'sweetalert2/dist/sweetalert2.css';
 import 'swiper/swiper-bundle.css';
 import AuthProvider from './context/AuthProvider';
 import './index.css';

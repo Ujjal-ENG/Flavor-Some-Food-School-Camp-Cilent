@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable comma-dangle */
 /* eslint-disable object-curly-newline */
@@ -8,6 +9,7 @@
 /* eslint-disable react/jsx-indent-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-indent */
+import axios from 'axios';
 import { useState } from 'react';
 import GoogleButton from 'react-google-button';
 import { useForm } from 'react-hook-form';
@@ -15,25 +17,64 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import Lottie from 'react-lottie';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import animationData from '../../../assets/json/login.json';
+import useAuth from '../../../hooks/useAuth';
 
 function Login() {
-    // const { signInUser, singInGoogle } = useAuth();
+    const { signInUser, singInGoogle } = useAuth();
     const location = useLocation();
     const navigate = useNavigate();
-    const from = location?.state?.from?.pathname || '';
+    const [loading, setIsLoading] = useState(false);
+    const from = location?.state?.from?.pathname || '/';
+
     const { register, handleSubmit } = useForm();
     const [passwordShow, setPasswordShow] = useState(false);
 
-    const onSubmit = (data) => {
-        const { email, password } = data;
-        // signInUser(email, password);
-        // navigate(from);
+    const onSubmit = async (data) => {
+        setIsLoading(true);
+        try {
+            const { email, password } = data;
+            await signInUser(email, password);
+            Swal.fire({
+                icon: 'success',
+                title: 'Oops...',
+                text: 'User LoggedIn Successfully!!'
+            });
+            navigate(from);
+            setIsLoading(false);
+        } catch (error) {
+            setIsLoading(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message
+            });
+        }
     };
 
-    const handleGoogleSignIn = () => {
-        // singInGoogle();
-        // navigate(from);
+    const handleGoogleSignIn = async () => {
+        setIsLoading(true);
+        try {
+            const { user } = await singInGoogle();
+            Swal.fire({
+                icon: 'success',
+                title: 'Oops...',
+                text: 'User LoggedIn Successfully!!'
+            });
+            if (user) {
+                await axios.post('http://localhost:8080/users', { name: user?.displayName, email: user?.email });
+                navigate(from);
+                setIsLoading(false);
+            }
+        } catch (error) {
+            setIsLoading(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message
+            });
+        }
     };
 
     const defaultOptions = {
@@ -116,7 +157,7 @@ function Login() {
                                 <button
                                     type="submit"
                                     className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white btn btn-primary">
-                                    Login
+                                    {loading ? <span className="loading loading-spinner" /> : 'Login'}
                                 </button>
                             </div>
                         </form>
@@ -136,7 +177,13 @@ function Login() {
                             </div>
 
                             <div className="w-full flex justify-center items-center mt-7">
-                                <GoogleButton onClick={handleGoogleSignIn} />
+                                {loading ? (
+                                    <button className="btn btn-square">
+                                        <span className="loading loading-spinner" />
+                                    </button>
+                                ) : (
+                                    <GoogleButton onClick={handleGoogleSignIn} />
+                                )}
                             </div>
                         </div>
                     </div>

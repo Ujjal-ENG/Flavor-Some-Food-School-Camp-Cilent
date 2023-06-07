@@ -6,7 +6,7 @@
 import axios from 'axios';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
-import 'sweetalert2/dist/sweetalert2.css';
+
 import app from '../config/firebase';
 
 export const AuthContext = createContext(null);

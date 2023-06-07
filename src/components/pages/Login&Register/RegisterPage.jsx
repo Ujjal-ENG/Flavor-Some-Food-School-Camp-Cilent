@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 /* eslint-disable object-curly-newline */
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable max-len */
@@ -9,7 +10,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-indent */
 import axios from 'axios';
-import { updateProfile } from 'firebase/auth';
+import { getAuth, signOut, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
 import GoogleButton from 'react-google-button';
 import { useForm } from 'react-hook-form';
@@ -17,15 +18,21 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
 import Lottie from 'react-lottie';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import animationData from '../../../assets/json/registration.json';
+import app from '../../../config/firebase';
 import useAuth from '../../../hooks/useAuth';
+
+const auth = getAuth(app);
 
 function Register() {
     const [passwordShow, setPasswordShow] = useState(false);
     const [passwordShow2, setPasswordShow2] = useState(false);
-    const { createUser, logOutUser, singInGoogle } = useAuth();
+    const { createUser, singInGoogle } = useAuth();
+    const [loading, setIsLoading] = useState(false);
     const location = useLocation();
     const navigate = useNavigate();
+
     const from = location?.state?.from?.pathname || '/';
     const {
         register,
@@ -36,27 +43,52 @@ function Register() {
     // const password = watch('password');
     // const confirmPassword = watch('confirmPassword');
     const onSubmit = async (data) => {
+        setIsLoading(true);
         try {
             const user = await createUser(data.email, data.password);
-            await updateProfile(user.currentUser, {
+            await updateProfile(user.user, {
                 displayName: data.name,
                 photoURL: data.photoUrl
             });
-            await axios.post(`http://localhost:8080/users?email=${data.email}`);
-            await logOutUser();
-            navigate(from);
+
+            if (user) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Oops...',
+                    text: 'User Registered Successfully!!'
+                });
+                await axios.post('http://localhost:8080/users', { name: user?.user?.displayName, email: user?.user?.email });
+
+                await signOut(auth);
+                navigate('/login');
+                setIsLoading(false);
+            }
         } catch (error) {
-            console.log(error);
+            setIsLoading(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message
+            });
         }
     };
 
     const handleGooglSignIn = async () => {
         try {
-            const user = await singInGoogle();
-            await axios.post(`http://localhost:8080/users?email=${user.email}`);
-            navigate(from);
+            const { user } = await singInGoogle();
+            console.log(user);
+            if (user) {
+                await axios.post('http://localhost:8080/users', { name: user?.displayName, email: user?.email });
+                navigate(from);
+                setIsLoading(false);
+            }
         } catch (error) {
-            console.log(error);
+            setIsLoading(false);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: error.message
+            });
         }
     };
 
@@ -188,7 +220,7 @@ function Register() {
                         </div>
                         <div className="flex items-center justify-center">
                             <button className="btn btn-primary  w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                                Sign up
+                                {loading ? <span className="loading loading-spinner" /> : 'Sign up'}
                             </button>
                         </div>
                     </form>
@@ -210,7 +242,13 @@ function Register() {
                         </div>
 
                         <div className="w-full flex justify-center items-center my-7">
-                            <GoogleButton onClick={handleGooglSignIn} />
+                            {loading ? (
+                                <button className="btn btn-square">
+                                    <span className="loading loading-spinner" />
+                                </button>
+                            ) : (
+                                <GoogleButton onClick={handleGooglSignIn} />
+                            )}
                         </div>
                     </div>
                 </div>

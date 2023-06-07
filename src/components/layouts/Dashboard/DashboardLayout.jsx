@@ -6,12 +6,14 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
+import useAdmin from '../../../hooks/useAdmin';
 import useStudent from '../../../hooks/useStudent';
 
 const DashboardLayout = () => {
     // TODO: load data from the server to have dynamic isAdmin based on Data
     // const isAdmin = true;
     const [isStudent] = useStudent();
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="grid grid-cols-3">
@@ -38,6 +40,26 @@ const DashboardLayout = () => {
                                 <li>
                                     <Link to="/dashboard/my-enrolled-classes" className="text-xl font-bold">
                                         My Selected Classes
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/" className="text-xl font-bold">
+                                        Home
+                                    </Link>
+                                </li>
+                            </>
+                        )}
+                        {isAdmin && (
+                            <>
+                                {' '}
+                                <li>
+                                    <Link to="/dashboard/manage-classes" className="text-xl font-bold">
+                                        Manage Classes
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/manage-users" className="text-xl font-bold">
+                                        Manage Users
                                     </Link>
                                 </li>
                                 <li>

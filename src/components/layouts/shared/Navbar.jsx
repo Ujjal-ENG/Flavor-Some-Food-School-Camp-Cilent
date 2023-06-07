@@ -10,12 +10,14 @@ import { HiShoppingBag } from 'react-icons/hi';
 import Lottie from 'react-lottie';
 import { Link, NavLink } from 'react-router-dom';
 import animationData from '../../../assets/json/logo.json';
+import useAdmin from '../../../hooks/useAdmin';
 import useAuth from '../../../hooks/useAuth';
 import useStudent from '../../../hooks/useStudent';
 
 const Navbar = () => {
     const { userInfo, logOutUser } = useAuth();
     const [isStudent] = useStudent();
+    const [isAdmin] = useAdmin();
     const navItems = (
         <div className="uppercase text-xl md:text-2xl flex md:flex-row flex-col items-center gap-5">
             <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'default')}>
@@ -38,6 +40,11 @@ const Navbar = () => {
                         <li>
                             {isStudent && (
                                 <Link to="/dashboard/my-selected-classes" className="justify-between text-center btn btn-block">
+                                    Dashboard
+                                </Link>
+                            )}
+                            {isAdmin && (
+                                <Link to="/dashboard/manage-classes" className="justify-between text-center btn btn-block">
                                     Dashboard
                                 </Link>
                             )}

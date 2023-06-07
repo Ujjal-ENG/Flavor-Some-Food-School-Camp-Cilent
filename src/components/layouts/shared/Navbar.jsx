@@ -29,11 +29,11 @@ const Navbar = () => {
             {userInfo && (
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                        <div className="w-14 rounded-full">
+                        <div className="md:w-14 rounded-full ">
                             <img alt={userInfo?.displayName} src={userInfo?.photoURL} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="mt-3  shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
+                    <ul tabIndex={0} className="mt-3 md:flex justify-center items-center hidden  shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
                         <li>
                             <Link to="/dashboard/user-home" className="justify-between text-center btn btn-block">
                                 Dashboard
@@ -46,6 +46,15 @@ const Navbar = () => {
                             </button>
                         </li>
                     </ul>
+                    <div className="md:hidden  flex-col flex justify-center items-center gap-3">
+                        <Link to="/dashboard/user-home" className="justify-between text-center btn btn-block">
+                            Dashboard
+                        </Link>
+
+                        <button type="button" className="btn btn-primary btn-block text-black" onClick={() => logOutUser()}>
+                            Logout
+                        </button>
+                    </div>
                 </div>
             )}
             {userInfo ? (

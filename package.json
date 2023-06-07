@@ -13,6 +13,7 @@
     "dependencies": {
         "axios": "^1.4.0",
         "firebase": "^9.22.1",
+        "framer-motion": "^10.12.16",
         "lint": "^0.8.19",
         "localforage": "^1.10.0",
         "match-sorter": "^6.3.1",
@@ -24,7 +25,8 @@
         "react-lottie": "^1.2.3",
         "react-router-dom": "^6.10.0",
         "sort-by": "^1.2.0",
-        "sweetalert2": "^11.7.11"
+        "sweetalert2": "^11.7.11",
+        "swiper": "^9.3.2"
     },
     "devDependencies": {
         "@types/react": "^18.0.28",

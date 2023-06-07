@@ -7,6 +7,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
 import useAdmin from '../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 import useStudent from '../../../hooks/useStudent';
 
 const DashboardLayout = () => {
@@ -14,6 +15,7 @@ const DashboardLayout = () => {
     // const isAdmin = true;
     const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
 
     return (
         <div className="grid grid-cols-3">
@@ -60,6 +62,26 @@ const DashboardLayout = () => {
                                 <li>
                                     <Link to="/dashboard/manage-users" className="text-xl font-bold">
                                         Manage Users
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/" className="text-xl font-bold">
+                                        Home
+                                    </Link>
+                                </li>
+                            </>
+                        )}
+                        {isInstructor && (
+                            <>
+                                {' '}
+                                <li>
+                                    <Link to="/dashboard/add-a-class" className="text-xl font-bold">
+                                        Add a Class
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/dashboard/my-classes" className="text-xl font-bold">
+                                        My Class
                                     </Link>
                                 </li>
                                 <li>

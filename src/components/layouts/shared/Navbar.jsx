@@ -12,12 +12,14 @@ import { Link, NavLink } from 'react-router-dom';
 import animationData from '../../../assets/json/logo.json';
 import useAdmin from '../../../hooks/useAdmin';
 import useAuth from '../../../hooks/useAuth';
+import useInstructor from '../../../hooks/useInstructor';
 import useStudent from '../../../hooks/useStudent';
 
 const Navbar = () => {
     const { userInfo, logOutUser } = useAuth();
     const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     const navItems = (
         <div className="uppercase text-xl md:text-2xl flex md:flex-row flex-col items-center gap-5">
             <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'default')}>
@@ -45,6 +47,11 @@ const Navbar = () => {
                             )}
                             {isAdmin && (
                                 <Link to="/dashboard/manage-classes" className="justify-between text-center btn btn-block">
+                                    Dashboard
+                                </Link>
+                            )}
+                            {isInstructor && (
+                                <Link to="/dashboard/add-a-class" className="justify-between text-center btn btn-block">
                                     Dashboard
                                 </Link>
                             )}

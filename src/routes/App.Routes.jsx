@@ -8,11 +8,14 @@ import ManageClasses from '../components/pages/HomePage/AdminPage/ManageClasses'
 import ManageUsers from '../components/pages/HomePage/AdminPage/ManageUsers';
 import AllClasses from '../components/pages/HomePage/Classses/AllClasses';
 import Home from '../components/pages/HomePage/Home';
+import AddaClass from '../components/pages/InstructorPage/AddaClass';
+import MyClasses from '../components/pages/InstructorPage/MyClasses';
 import Login from '../components/pages/Login&Register/Login';
 import RegisterPage from '../components/pages/Login&Register/RegisterPage';
 import MyEnrolledClasses from '../components/pages/StudentPage/MyEnrolledClasses';
 import MySelectedClasses from '../components/pages/StudentPage/MySelectedClasses';
 import AdminRoutes from './AdminRoutes';
+import InstructorRoutes from './InstructorRoutes';
 import PrivateRoutes from './PrivateRoute';
 import StudentRoutes from './StudentRoutes';
 
@@ -79,6 +82,22 @@ export const router = createBrowserRouter([
                     <AdminRoutes>
                         <ManageUsers />
                     </AdminRoutes>
+                )
+            },
+            {
+                path: '/dashboard/add-a-class',
+                element: (
+                    <InstructorRoutes>
+                        <AddaClass />
+                    </InstructorRoutes>
+                )
+            },
+            {
+                path: '/dashboard/my-classes',
+                element: (
+                    <InstructorRoutes>
+                        <MyClasses />
+                    </InstructorRoutes>
                 )
             }
         ]

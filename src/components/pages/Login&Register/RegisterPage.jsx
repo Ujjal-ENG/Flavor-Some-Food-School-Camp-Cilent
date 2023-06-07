@@ -8,32 +8,56 @@
 /* eslint-disable react/jsx-indent-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-indent */
+import axios from 'axios';
+import { updateProfile } from 'firebase/auth';
 import { useState } from 'react';
 import GoogleButton from 'react-google-button';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
 import Lottie from 'react-lottie';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import animationData from '../../../assets/json/registration.json';
+import useAuth from '../../../hooks/useAuth';
 
 function Register() {
     const [passwordShow, setPasswordShow] = useState(false);
     const [passwordShow2, setPasswordShow2] = useState(false);
-    // const { createUser } = useContext(AuthContext);
+    const { createUser, logOutUser, singInGoogle } = useAuth();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/';
     const {
         register,
         handleSubmit,
         formState: { errors },
-        watch,
         getValues
     } = useForm();
-    const password = watch('password');
-    const confirmPassword = watch('confirmPassword');
-    console.log(password);
-    const onSubmit = (data) => {
-        // createUser(data.name, data.photoUrl, data.email, data.password);
-        console.log(data);
+    // const password = watch('password');
+    // const confirmPassword = watch('confirmPassword');
+    const onSubmit = async (data) => {
+        try {
+            const user = await createUser(data.email, data.password);
+            await updateProfile(user.currentUser, {
+                displayName: data.name,
+                photoURL: data.photoUrl
+            });
+            await axios.post(`http://localhost:8080/users?email=${data.email}`);
+            await logOutUser();
+            navigate(from);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const handleGooglSignIn = async () => {
+        try {
+            const user = await singInGoogle();
+            await axios.post(`http://localhost:8080/users?email=${user.email}`);
+            navigate(from);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const defaultOptions = {
@@ -186,7 +210,7 @@ function Register() {
                         </div>
 
                         <div className="w-full flex justify-center items-center my-7">
-                            <GoogleButton />
+                            <GoogleButton onClick={handleGooglSignIn} />
                         </div>
                     </div>
                 </div>

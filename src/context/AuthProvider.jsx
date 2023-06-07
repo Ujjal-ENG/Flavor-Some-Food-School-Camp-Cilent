@@ -6,7 +6,6 @@
 import axios from 'axios';
 import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
 import React, { createContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import 'sweetalert2/dist/sweetalert2.css';
 import app from '../config/firebase';
 
@@ -18,8 +17,7 @@ const provider = new GoogleAuthProvider();
 function AuthProvider({ children }) {
     const [privateLoad, setPrivateLoad] = useState(true);
     const [userInfo, setUserInfo] = useState(null);
-    const navigate = useNavigate();
-    const createUser = (name, photo, email, password) => {
+    const createUser = (email, password) => {
         setPrivateLoad(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
@@ -44,7 +42,7 @@ function AuthProvider({ children }) {
     useEffect(() => {
         const unSubscriber = onAuthStateChanged(auth, async (user) => {
             if (user && user.email) {
-                const { data } = await axios.post('https://toy-troppers-server.vercel.app/jwt', { email: user.email });
+                const { data } = await axios.post('http://localhost:8080/jwt', { email: user.email });
                 localStorage.setItem('token', data.token);
             } else {
                 localStorage.removeItem('token');

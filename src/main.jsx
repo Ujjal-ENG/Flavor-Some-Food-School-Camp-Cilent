@@ -1,7 +1,13 @@
+/* eslint-disable comma-dangle */
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
+import AuthProvider from './context/AuthProvider';
 import './index.css';
 import { router } from './routes/App.Routes';
 
-ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router} />);
+ReactDOM.createRoot(document.getElementById('root')).render(
+    <AuthProvider>
+        <RouterProvider router={router} />
+    </AuthProvider>
+);

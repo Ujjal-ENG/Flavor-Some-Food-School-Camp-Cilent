@@ -21,10 +21,10 @@ const Navbar = () => {
                 Home
             </NavLink>
             <NavLink to="/our-menu" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                Our Menu
+                Instructors
             </NavLink>
             <NavLink to="/order-food/salad" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                Oder Food
+                Classes
             </NavLink>
             {userInfo && (
                 <div className="dropdown dropdown-end">

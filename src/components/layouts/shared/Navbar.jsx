@@ -11,10 +11,11 @@ import Lottie from 'react-lottie';
 import { Link, NavLink } from 'react-router-dom';
 import animationData from '../../../assets/json/logo.json';
 import useAuth from '../../../hooks/useAuth';
+import useStudent from '../../../hooks/useStudent';
 
 const Navbar = () => {
     const { userInfo, logOutUser } = useAuth();
-
+    const [isStudent] = useStudent();
     const navItems = (
         <div className="uppercase text-xl md:text-2xl flex md:flex-row flex-col items-center gap-5">
             <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'default')}>
@@ -35,9 +36,11 @@ const Navbar = () => {
                     </label>
                     <ul tabIndex={0} className="mt-3 md:flex justify-center items-center hidden  shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
                         <li>
-                            <Link to="/dashboard/my-selected-classes" className="justify-between text-center btn btn-block">
-                                Dashboard
-                            </Link>
+                            {isStudent && (
+                                <Link to="/dashboard/my-selected-classes" className="justify-between text-center btn btn-block">
+                                    Dashboard
+                                </Link>
+                            )}
                         </li>
 
                         <li>

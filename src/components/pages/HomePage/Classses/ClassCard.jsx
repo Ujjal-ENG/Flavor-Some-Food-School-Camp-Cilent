@@ -4,7 +4,6 @@
 import React from 'react';
 
 const ClassCard = ({ data }) => {
-    console.log(data);
     return (
         <div>
             <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>

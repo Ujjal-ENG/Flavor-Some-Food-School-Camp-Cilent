@@ -38,7 +38,6 @@ function Login() {
             await signInUser(email, password);
             Swal.fire({
                 icon: 'success',
-                title: 'Oops...',
                 text: 'User LoggedIn Successfully!!'
             });
             navigate(from);
@@ -59,7 +58,6 @@ function Login() {
             const { user } = await singInGoogle();
             Swal.fire({
                 icon: 'success',
-                title: 'Oops...',
                 text: 'User LoggedIn Successfully!!'
             });
             if (user) {

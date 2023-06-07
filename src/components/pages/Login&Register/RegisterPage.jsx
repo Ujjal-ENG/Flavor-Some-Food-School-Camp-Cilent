@@ -54,7 +54,6 @@ function Register() {
             if (user) {
                 Swal.fire({
                     icon: 'success',
-                    title: 'Oops...',
                     text: 'User Registered Successfully!!'
                 });
                 await axios.post('http://localhost:8080/users', { name: user?.user?.displayName, email: user?.user?.email });
@@ -78,6 +77,11 @@ function Register() {
             const { user } = await singInGoogle();
             console.log(user);
             if (user) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'User Successfully Registerd and LoggedIn!!'
+                });
                 await axios.post('http://localhost:8080/users', { name: user?.displayName, email: user?.email });
                 navigate(from);
                 setIsLoading(false);

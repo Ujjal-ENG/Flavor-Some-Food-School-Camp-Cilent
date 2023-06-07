@@ -70,7 +70,7 @@ function Register() {
     };
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 my-container gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-2 my-container gap-7 ">
             <div className="min-h-screen shadow-xl duration-200 transition-shadow ease-in-out hover:shadow-2xl flex justify-center items-center order-2 md:order-1">
                 <div className="max-w-xl w-full mx-auto">
                     <div className="text-center font-bold text-gray-700 text-3xl mb-6">Sign up</div>
@@ -215,8 +215,8 @@ function Register() {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-100 order-1 md:order-2">
-                <Lottie options={defaultOptions} height={400} width={400} />
+            <div className=" order-1 md:order-2">
+                <Lottie options={defaultOptions} height={700} width={400} />
             </div>
         </div>
     );

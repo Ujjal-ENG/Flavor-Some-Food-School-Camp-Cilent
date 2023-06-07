@@ -40,12 +40,11 @@ const AddaClass = () => {
             fromData.append('image', data.image[0]);
 
             const res = await axios.post(imgHoistingUrl, fromData);
-            console.log(res, data);
             if (res) {
                 const imgURL = res.data.data.display_url;
                 data.image = imgURL;
                 const response = await axiosSecure.post('/classes', data);
-
+                console.log(response);
                 if (response.data.success) {
                     Swal.fire({
                         icon: 'success',

@@ -24,7 +24,7 @@ const Navbar = () => {
             <NavLink to="/our-menu" className={({ isActive }) => (isActive ? 'active' : 'default')}>
                 Instructors
             </NavLink>
-            <NavLink to="/order-food/salad" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+            <NavLink to="/all-classes" className={({ isActive }) => (isActive ? 'active' : 'default')}>
                 Classes
             </NavLink>
             {userInfo && (

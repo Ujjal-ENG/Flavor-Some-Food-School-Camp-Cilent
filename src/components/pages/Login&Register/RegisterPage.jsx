@@ -80,7 +80,7 @@ function Register() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'User Successfully Registerd and LoggedIn!!'
+                    text: 'User Successfully Registered and LoggedIn!!'
                 });
                 await axios.post('http://localhost:8080/users', { name: user?.displayName, email: user?.email });
                 navigate(from);

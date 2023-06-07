@@ -40,7 +40,7 @@ const AddaClass = () => {
             fromData.append('image', data.image[0]);
 
             const res = await axios.post(imgHoistingUrl, fromData);
-
+            console.log(res, data);
             if (res) {
                 const imgURL = res.data.data.display_url;
                 data.image = imgURL;
@@ -108,7 +108,15 @@ const AddaClass = () => {
                         <label className="label">
                             <span className="label-text font-bold text-black">Available Seats*</span>
                         </label>
-                        <input {...register('availableSeats', { required: true })} type="number" placeholder="Type here" className="input input-bordered input-primary w-full max-w-3xl" required />
+                        <input
+                            {...register('availableSeats', { required: true })}
+                            type="number"
+                            placeholder="Type here"
+                            min={1}
+                            max={5}
+                            className="input input-bordered input-primary w-full max-w-3xl"
+                            required
+                        />
                     </div>
                     <div>
                         <label className="label">

@@ -9,6 +9,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-indent */
 import { useState } from 'react';
+import GoogleButton from 'react-google-button';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
@@ -162,7 +163,7 @@ function Register() {
                             {errors.photoUrl && <p className="text-sm text-red-600 mt-1">Photo URL is required</p>}
                         </div>
                         <div className="flex items-center justify-center">
-                            <button className="btn btn-primary  w-full text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                            <button className="btn btn-primary  w-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
                                 Sign up
                             </button>
                         </div>
@@ -172,6 +173,21 @@ function Register() {
                         <Link to="/login" className="text-blue-500 hover:text-blue-700">
                             Log In
                         </Link>
+                    </div>
+
+                    <div className="mt-6">
+                        <div className="relative">
+                            <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                                <div className="w-full border-t border-gray-300" />
+                            </div>
+                            <div className="relative flex justify-center text-sm">
+                                <span className="px-2 bg-white text-gray-500">Or continue with</span>
+                            </div>
+                        </div>
+
+                        <div className="w-full flex justify-center items-center my-7">
+                            <GoogleButton />
+                        </div>
                     </div>
                 </div>
             </div>

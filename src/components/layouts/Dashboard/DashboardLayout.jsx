@@ -4,42 +4,46 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { AiFillHome } from 'react-icons/ai';
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
+
 import useStudent from '../../../hooks/useStudent';
 
 const DashboardLayout = () => {
+    // TODO: load data from the server to have dynamic isAdmin based on Data
+    // const isAdmin = true;
     const [isStudent] = useStudent();
-    console.log(isStudent);
+
     return (
         <div className="grid grid-cols-3">
-            <div className="drawer col-span-1  drawer-mobile">
+            <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
+                    {/* Page content here */}
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">
                         Open drawer
                     </label>
                 </div>
-                <div className="drawer-side  ">
+                <div className="drawer-side">
                     <label htmlFor="my-drawer-2" className="drawer-overlay" />
-                    <ul className="menu p-4 w-80 bg-primary text-base-content">
-                        <h1 className="text-4xl uppercase font-bold text-center py-2">Flavorsome | Food</h1>
-                        <h4 className="text-2xl uppercase tracking-widest font-bold text-center pt-2 pb-14">School</h4>
-
-                        <div className="divider text-white" />
+                    <ul className="menu p-4 w-80 h-full bg-base-200 text-base-content">
+                        {/* Sidebar content here */}
                         {isStudent && (
                             <>
+                                {' '}
                                 <li>
-                                    <NavLink to="/dashboard/my-selected-classes" className="text-xl font-semibold uppercase hover:text-white">
-                                        <AiFillHome />
-                                        Home
-                                    </NavLink>
+                                    <Link to="/dashboard/my-selected-classes" className="text-xl font-bold">
+                                        My Selected Classes
+                                    </Link>
                                 </li>
                                 <li>
-                                    <NavLink to="/" className="text-xl font-semibold uppercase hover:text-white">
-                                        <AiFillHome />
+                                    <Link to="/dashboard/my-enrolled-classes" className="text-xl font-bold">
+                                        My Selected Classes
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link to="/" className="text-xl font-bold">
                                         Home
-                                    </NavLink>
+                                    </Link>
                                 </li>
                             </>
                         )}

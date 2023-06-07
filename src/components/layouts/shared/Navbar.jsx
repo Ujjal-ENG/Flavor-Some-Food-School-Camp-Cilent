@@ -33,15 +33,15 @@ const Navbar = () => {
                             <img alt={userInfo?.displayName} src={userInfo?.photoURL} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
+                    <ul tabIndex={0} className="mt-3  shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
                         <li>
-                            <Link to="/dashboard/user-home" className="justify-between">
+                            <Link to="/dashboard/user-home" className="justify-between text-center btn btn-block">
                                 Dashboard
                             </Link>
                         </li>
 
                         <li>
-                            <button type="button" className="btn btn-block text-white" onClick={() => logOutUser()}>
+                            <button type="button" className="btn btn-primary btn-block text-black" onClick={() => logOutUser()}>
                                 Logout
                             </button>
                         </li>

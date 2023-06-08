@@ -1,15 +1,30 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable react/jsx-indent-props */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import Swal from 'sweetalert2';
 import useAdmin from '../../../../hooks/useAdmin';
-import useInstructor from '../../../../hooks/useInstructor';
 import useAuth from '../../../../hooks/useAuth';
+import useInstructor from '../../../../hooks/useInstructor';
 
 const ClassCard = ({ data }) => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const { userInfo } = useAuth();
+    const handleSelectClasses = (id) => {
+        if (!userInfo && !isInstructor) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please Login First for Selecting the Course!!!'
+            });
+        } else {
+            console.log(id);
+        }
+    };
     return (
         <div>
             <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>
@@ -34,7 +49,11 @@ const ClassCard = ({ data }) => {
                         </h5>
                     </div>
                     {/* TODO: button will also disable when the role is isAdmin or isInstructors */}
-                    <button type="button" className="btn btn-primary font-bold btn-block mt-5" disabled={(data?.availableSeats === 0 || isAdmin || isInstructor) && true}>
+                    <button
+                        type="button"
+                        className="btn btn-primary font-bold btn-block mt-5"
+                        disabled={(data?.availableSeats === 0 || isAdmin || isInstructor) && true}
+                        onClick={() => handleSelectClasses(data._id)}>
                         Select Class!!
                     </button>
                 </div>

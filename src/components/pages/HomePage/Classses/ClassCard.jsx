@@ -4,10 +4,12 @@
 import React from 'react';
 import useAdmin from '../../../../hooks/useAdmin';
 import useInstructor from '../../../../hooks/useInstructor';
+import useAuth from '../../../../hooks/useAuth';
 
 const ClassCard = ({ data }) => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+    const { userInfo } = useAuth();
     return (
         <div>
             <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>

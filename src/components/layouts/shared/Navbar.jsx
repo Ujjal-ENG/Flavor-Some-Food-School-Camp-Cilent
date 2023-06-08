@@ -111,9 +111,7 @@ const Navbar = () => {
     return (
         <div>
             <div
-                className={`z-10 mb-10 navbar max-w-screen-2xl duration-200 transition-all ${
-                    isScrolled ? 'ease-out fixed bg-opacity-100 mx-auto bg-black' : 'fixed  bg-white py-3 ease-in bg-opacity-30'
-                }`}>
+                className={`z-10 mb-10 navbar w-full  duration-200 transition-all ${isScrolled ? 'ease-out fixed bg-opacity-100 mx-auto bg-black' : 'fixed  bg-slate-500 py-3 ease-in bg-opacity-30'}`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

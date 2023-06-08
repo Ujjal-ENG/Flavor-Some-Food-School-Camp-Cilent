@@ -47,12 +47,7 @@ const DashboardLayout = () => {
                                     </li>
                                     <li>
                                         <Link to="/dashboard/my-enrolled-classes" className="text-xl font-bold">
-                                            My Selected Classes
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/" className="text-xl font-bold">
-                                            Home
+                                            My Enrolled Classes
                                         </Link>
                                     </li>
                                 </>
@@ -70,11 +65,6 @@ const DashboardLayout = () => {
                                             Manage Users
                                         </Link>
                                     </li>
-                                    <li>
-                                        <Link to="/" className="text-xl font-bold">
-                                            Home
-                                        </Link>
-                                    </li>
                                 </>
                             )}
                             {isInstructor && (
@@ -88,11 +78,6 @@ const DashboardLayout = () => {
                                     <li>
                                         <Link to="/dashboard/my-classes" className="text-xl font-bold">
                                             My Class
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link to="/" className="text-xl font-bold">
-                                            Home
                                         </Link>
                                     </li>
                                 </>

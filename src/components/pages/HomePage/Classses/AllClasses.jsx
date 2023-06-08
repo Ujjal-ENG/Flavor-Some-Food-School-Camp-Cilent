@@ -6,8 +6,8 @@ import ClassCard from './ClassCard';
 const AllClasses = () => {
     const [classes, setAllClasses] = useState([]);
     useEffect(() => {
-        axios.get('popularClass.json').then(({ data }) => {
-            return setAllClasses(data.classes);
+        axios.get('http://localhost:8080/classes').then(({ data }) => {
+            return setAllClasses(data.data);
         });
     }, []);
     return (

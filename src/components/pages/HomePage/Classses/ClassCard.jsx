@@ -2,8 +2,12 @@
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import useAdmin from '../../../../hooks/useAdmin';
+import useInstructor from '../../../../hooks/useInstructor';
 
 const ClassCard = ({ data }) => {
+    const [isAdmin] = useAdmin();
+    const [isInstructor] = useInstructor();
     return (
         <div>
             <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>
@@ -28,7 +32,7 @@ const ClassCard = ({ data }) => {
                         </h5>
                     </div>
                     {/* TODO: button will also disable when the role is isAdmin or isInstructors */}
-                    <button type="button" className="btn btn-primary font-bold btn-block mt-5" disabled={data?.availableSeats === 0 && true}>
+                    <button type="button" className="btn btn-primary font-bold btn-block mt-5" disabled={(data?.availableSeats === 0 || isAdmin || isInstructor) && true}>
                         Select Class!!
                     </button>
                 </div>

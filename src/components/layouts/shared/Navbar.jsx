@@ -74,15 +74,16 @@ const Navbar = () => {
                     </div>
                 </div>
             )}
-            {userInfo ? (
+            {!userInfo && (
+                <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : 'default')}>
+                    Login
+                </NavLink>
+            )}
+            {isStudent && (
                 <Link to="/dashboard/carts" type="button" className="btn relative">
                     <HiShoppingBag className="text-5xl" />
                     <div className="badge badge-secondary absolute top-0 -right-3">+</div>
                 </Link>
-            ) : (
-                <NavLink to="/login" className={({ isActive }) => (isActive ? 'active' : 'default')}>
-                    Login
-                </NavLink>
             )}
         </div>
     );
@@ -111,7 +112,9 @@ const Navbar = () => {
     return (
         <div>
             <div
-                className={`z-10 mb-10 navbar w-full  duration-200 transition-all ${isScrolled ? 'ease-out fixed bg-opacity-100 mx-auto bg-black' : 'fixed  bg-slate-500 py-3 ease-in bg-opacity-30'}`}>
+                className={`z-10 mb-10 navbar w-full px-10  duration-200 transition-all ${
+                    isScrolled ? 'ease-out fixed bg-opacity-100 mx-auto bg-black' : 'fixed  bg-slate-500 py-3 ease-in bg-opacity-30'
+                }`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">

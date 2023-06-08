@@ -81,6 +81,7 @@ const ManageClasses = () => {
     return (
         <div>
             <SharedTitle title1="Manage" title2="Classes" />
+
             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12 py-10 z-30">
                 {classes &&
                     classes.map((data) => {
@@ -143,7 +144,7 @@ const ManageClasses = () => {
                         );
                     })}
             </div>
-            <Modal id={idFeedBack} refetch={refetch} />;
+            <Modal id={idFeedBack} refetch={refetch} />
         </div>
     );
 };

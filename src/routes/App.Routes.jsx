@@ -14,6 +14,7 @@ import Login from '../components/pages/Login&Register/Login';
 import RegisterPage from '../components/pages/Login&Register/RegisterPage';
 import MyEnrolledClasses from '../components/pages/StudentPage/MyEnrolledClasses';
 import MySelectedClasses from '../components/pages/StudentPage/MySelectedClasses';
+import PaymentDetails from '../components/pages/StudentPage/PaymentDetails';
 import AdminRoutes from './AdminRoutes';
 import InstructorRoutes from './InstructorRoutes';
 import PrivateRoutes from './PrivateRoute';
@@ -65,6 +66,14 @@ export const router = createBrowserRouter([
                 element: (
                     <StudentRoutes>
                         <MyEnrolledClasses />
+                    </StudentRoutes>
+                )
+            },
+            {
+                path: '/dashboard/my-selected-classes/payment-details',
+                element: (
+                    <StudentRoutes>
+                        <PaymentDetails />
                     </StudentRoutes>
                 )
             },

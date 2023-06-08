@@ -106,7 +106,7 @@ const MySelectedClasses = () => {
                                             Delete
                                         </button>
                                     )}
-                                    <Link type="button" className="btn btn-primary font-bold  mt-5">
+                                    <Link to="/dashboard/my-selected-classes/payment-details" state={data} type="button" className="btn btn-primary font-bold  mt-5">
                                         Payment
                                     </Link>
                                 </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable max-len */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
@@ -9,14 +10,16 @@ import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAdmin from '../../../../hooks/useAdmin';
 import useAuth from '../../../../hooks/useAuth';
+import useAxiosSecure from '../../../../hooks/useAxiosSecure';
 import useInstructor from '../../../../hooks/useInstructor';
 
 const ClassCard = ({ data }) => {
     const [isClicked, setIsClicked] = useState(null);
+    const [axiosSecure] = useAxiosSecure();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const { userInfo } = useAuth();
-    const handleSelectClasses = (id) => {
+    const handleSelectClasses = async (classes) => {
         if (!userInfo && !isInstructor) {
             Swal.fire({
                 icon: 'error',
@@ -24,8 +27,16 @@ const ClassCard = ({ data }) => {
                 text: 'Please Login First for Selecting the Course!!!'
             });
         } else {
-            console.log(id);
-            setIsClicked(id);
+            classes.studentEmail = userInfo.email;
+            const res = await axiosSecure.post('/selected-classes', classes);
+            if (res.data) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Great!!',
+                    text: 'You Successfully Added the course please Payment asap!!'
+                });
+                setIsClicked(classes._id);
+            }
         }
     };
     return (
@@ -56,7 +67,7 @@ const ClassCard = ({ data }) => {
                         type="button"
                         className="btn btn-primary font-bold btn-block mt-5"
                         disabled={(data?.availableSeats === 0 || isAdmin || isInstructor || isClicked === data._id) && true}
-                        onClick={() => handleSelectClasses(data._id)}>
+                        onClick={() => handleSelectClasses(data)}>
                         Select Class!!
                     </button>
                 </div>

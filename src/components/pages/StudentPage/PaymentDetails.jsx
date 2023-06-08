@@ -20,12 +20,12 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_SECRET_KEY);
 
 const PaymentDetails = () => {
     const { state } = useLocation();
-    console.log(state);
+
     return (
         <div>
             <SharedTitle title1="Payment" title2="Details" />
             <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
-                <CheckoutForm />
+                <CheckoutForm data={state} />
             </Elements>
         </div>
     );

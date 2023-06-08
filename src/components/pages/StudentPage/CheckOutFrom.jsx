@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/label-has-associated-control */
@@ -141,8 +142,6 @@ const CheckoutForm = ({ data }) => {
         if (confirmError) {
             setError(confirmError);
         }
-        console.log(paymentIntent);
-        setProcessing(false);
 
         if (payload.error) {
             setError(payload.error);
@@ -152,6 +151,19 @@ const CheckoutForm = ({ data }) => {
 
         if (paymentIntent.status === 'succeeded') {
             const transactionID = paymentIntent.id;
+            // save payment information
+            const payment = {
+                email: userInfo?.email,
+                transactionsId: transactionID,
+                price,
+                quantity: 1,
+                date: new Date(),
+                className: data?.name,
+                classId: data?.classId,
+                selectedItemId: data?._id
+            };
+            await axiosSecure.post('/payments', payment);
+            setProcessing(false);
         }
     };
 
@@ -170,7 +182,10 @@ const CheckoutForm = ({ data }) => {
             <div className="ResultTitle" role="alert">
                 Payment successful
             </div>
-            <div className="ResultMessage">Thanks for trying Stripe Elements. No money was charged, but we generated a PaymentMethod: {paymentMethod.id}</div>
+            <div className="ResultMessage">
+                Thanks for trying Stripe Elements. <span className="text-2xl font-bold text-red-600">${price}</span> money was charged, also we generated a PaymentMethod and your transactionID is:{' '}
+                <span className="text-2xl font-bold text-green-600">{paymentMethod.id}</span>
+            </div>
             <ResetButton onClick={reset} />
         </div>
     ) : (

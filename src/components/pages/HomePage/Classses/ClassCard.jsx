@@ -28,6 +28,7 @@ const ClassCard = ({ data }) => {
             });
         } else {
             classes.studentEmail = userInfo.email;
+            classes.classId = data._id;
             const res = await axiosSecure.post('/selected-classes', classes);
             if (res.data) {
                 Swal.fire({

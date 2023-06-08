@@ -84,7 +84,7 @@ const Navbar = () => {
             {isStudent && (
                 <Link to="/dashboard/my-selected-classes" type="button" className="btn relative">
                     <HiShoppingBag className="text-5xl" />
-                    <div className="badge badge-secondary absolute top-0 -right-3">+{selectedClass.length || 0}</div>
+                    <div className="badge badge-primary absolute top-0 -right-3 font-bold text-xl">+{selectedClass.length || 0}</div>
                 </Link>
             )}
         </div>

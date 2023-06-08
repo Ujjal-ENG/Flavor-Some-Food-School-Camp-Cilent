@@ -8,8 +8,8 @@ import React, { useEffect, useState } from 'react';
 import { MdEmojiPeople } from 'react-icons/md';
 import { RiAdminFill } from 'react-icons/ri';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../../../hooks/useAxiosSecure';
-import SharedTitle from '../../../layouts/shared/SharedTitle';
+import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import SharedTitle from '../../layouts/shared/SharedTitle';
 
 const ManageUsers = () => {
     const [isClicked, setIclicked] = useState(false);

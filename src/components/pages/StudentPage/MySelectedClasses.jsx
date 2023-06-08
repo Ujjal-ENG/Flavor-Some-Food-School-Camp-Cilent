@@ -59,7 +59,7 @@ const MySelectedClasses = () => {
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-10 py-10">
                 {selectedClass.length <= 0 ? (
-                    <SharedTitle title1="Your Have not" title2="Selected any Classes" />
+                    <SharedTitle title1="Your Have not" title2="Selected any Classes!!" />
                 ) : (
                     selectedClass.map((data) => (
                         <div key={data._id} className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>
@@ -82,7 +82,7 @@ const MySelectedClasses = () => {
                                         Instructor: <span className="text-primary">{data?.instructor}</span>
                                     </h5>
                                 </div>
-                                {/* TODO: button will also disable when the role is isAdmin or isInstructors */}
+
                                 <div className="grid grid-cols-2 gap-5">
                                     {loading ? (
                                         <button className="btn btn-square">

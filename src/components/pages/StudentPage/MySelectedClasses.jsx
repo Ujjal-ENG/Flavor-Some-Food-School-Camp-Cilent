@@ -7,30 +7,17 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable comma-dangle */
-import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import useSelectedClasses from '../../../hooks/useSelectedClasses';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
 const MySelectedClasses = () => {
-    const { userInfo, privateLoad } = useAuth();
     const [loading, setIsLoading] = useState(false);
+    const [selectedClass, isLoading, refetch] = useSelectedClasses();
     const [axiosSecure] = useAxiosSecure();
-    const {
-        data: selectedClass = [],
-        isLoading,
-        refetch
-    } = useQuery({
-        queryKey: ['selected-classes'],
-        enabled: !!userInfo?.email && !privateLoad,
-        queryFn: async () => {
-            const { data } = await axiosSecure.get(`/selected-classes/${userInfo?.email}`);
-            return data.data;
-        }
-    });
 
     const handleDeleteClasses = async (id) => {
         setIsLoading(true);

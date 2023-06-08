@@ -2,6 +2,7 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 import CheckoutForm from './CheckOutFrom';
 
@@ -18,6 +19,8 @@ const ELEMENTS_OPTIONS = {
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_SECRET_KEY);
 
 const PaymentDetails = () => {
+    const { state } = useLocation();
+    console.log(state);
     return (
         <div>
             <SharedTitle title1="Payment" title2="Details" />

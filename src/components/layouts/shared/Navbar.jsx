@@ -13,10 +13,12 @@ import animationData from '../../../assets/json/logo.json';
 import useAdmin from '../../../hooks/useAdmin';
 import useAuth from '../../../hooks/useAuth';
 import useInstructor from '../../../hooks/useInstructor';
+import useSelectedClasses from '../../../hooks/useSelectedClasses';
 import useStudent from '../../../hooks/useStudent';
 
 const Navbar = () => {
     const { userInfo, logOutUser } = useAuth();
+    const [selectedClass, isLoading, refetch] = useSelectedClasses();
     const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
@@ -80,9 +82,9 @@ const Navbar = () => {
                 </NavLink>
             )}
             {isStudent && (
-                <Link to="/dashboard/carts" type="button" className="btn relative">
+                <Link to="/dashboard/my-selected-classes" type="button" className="btn relative">
                     <HiShoppingBag className="text-5xl" />
-                    <div className="badge badge-secondary absolute top-0 -right-3">+</div>
+                    <div className="badge badge-secondary absolute top-0 -right-3">+{selectedClass.length || 0}</div>
                 </Link>
             )}
         </div>

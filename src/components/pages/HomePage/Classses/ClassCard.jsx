@@ -20,7 +20,7 @@ const ClassCard = ({ data }) => {
     const [isInstructor] = useInstructor();
     const { userInfo } = useAuth();
     const handleSelectClasses = async (classes) => {
-        if (!userInfo && !isInstructor) {
+        if (!userInfo?.email && !isInstructor) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',

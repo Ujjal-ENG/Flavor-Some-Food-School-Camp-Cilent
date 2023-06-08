@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable operator-linebreak */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-one-expression-per-line */
@@ -21,7 +22,7 @@ const MyClasses = () => {
             return data.data;
         }
     });
-    console.log(allClasses);
+
     return (
         <div>
             <SharedTitle title1="My" title2="Classes" />
@@ -29,7 +30,7 @@ const MyClasses = () => {
                 {allClasses &&
                     allClasses.map((data) => {
                         return (
-                            <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>
+                            <div key={data._id} className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>
                                 <div className="p-5">
                                     <div className="relative">
                                         <a href="#" title="" className="block ">
@@ -41,7 +42,7 @@ const MyClasses = () => {
                                                 className={`px-4 py-2 text-2xl font-semibold tracking-widest text-white uppercase ${data?.status === 'pending' && 'bg-warning'} ${
                                                     data?.status === 'denied' && 'bg-error'
                                                 } ${data?.status === 'approved' && 'bg-green-500'} rounded-full`}>
-                                                ${data?.status}
+                                                {data?.status}
                                             </span>
                                         </div>
                                     </div>
@@ -57,7 +58,7 @@ const MyClasses = () => {
                                         <h5 className="text-xl font-bold py-2">
                                             Total Enrolled Students: <span className="text-primary">0</span>
                                         </h5>
-                                        {data?.status === 'denied' && (
+                                        {(data?.status === 'denied' || data?.status === 'approved') && (
                                             <h5 className="text-xl font-bold py-2 text-red-500">
                                                 FeedBack: <span className="text-primary">{data?.feedback}</span>
                                             </h5>

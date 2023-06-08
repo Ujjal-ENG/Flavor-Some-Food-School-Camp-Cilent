@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 import axios from 'axios';
@@ -18,9 +19,10 @@ const AllClasses = () => {
     return (
         <div className="pt-24">
             <div className="flex-1 text-center lg:text-left">
-                <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Latest from blog</h2>
-                <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600 lg:mx-0">
-                    Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis.
+                <h2 className="text-3xl font-bold pt-5 leading-tight text-black sm:text-4xl lg:text-5xl">All Classes from the all Instructors</h2>
+                <p className="max-w-2xl mx-auto mt-4 text-xl leading-relaxed text-gray-600 lg:mx-0">
+                    Discover a wide range of classes offered by various instructors. Whether you're looking to learn something new or enhance your skills, we have the perfect classes for you. Explore
+                    our diverse selection and embark on an exciting learning journey today!
                 </p>
             </div>
             {loading && (

@@ -33,7 +33,7 @@ const ManageClasses = () => {
         try {
             const result = await Swal.fire({
                 title: 'Are you sure?',
-                text: 'You won not be updated after change it?',
+                text: 'You will change the status Pending to Approve.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -55,7 +55,7 @@ const ManageClasses = () => {
         try {
             const result = await Swal.fire({
                 title: 'Are you sure?',
-                text: 'You won not be updated after change it?',
+                text: 'You will to change the status Pending to Deny.',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -81,7 +81,7 @@ const ManageClasses = () => {
     return (
         <div>
             <SharedTitle title1="Manage" title2="Classes" />
-            <div className="grid grid-cols-1 md:grid-cols-3 justify-items-center gap-10 -ml-0 md:-ml-60 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12 py-10 z-30">
                 {classes &&
                     classes.map((data) => {
                         return (
@@ -89,7 +89,7 @@ const ManageClasses = () => {
                                 <div className="p-5">
                                     <div className="relative">
                                         <a href="#" title="" className="block">
-                                            <img className="object-cover w-96 h-72" src={data?.image} alt={data?.name} />
+                                            <img className="object-cover max-w-2xl w-full h-72" src={data?.image} alt={data?.name} />
                                         </a>
 
                                         <div className="absolute top-4 right-6">
@@ -112,11 +112,19 @@ const ManageClasses = () => {
                                             Status: <span className={`text-primary ${data?.status === 'pending' && 'text-warning'} ${data?.status === 'denied' && 'text-error'}`}>{data?.status}</span>
                                         </h6>
                                     </div>
-                                    <div className="flex justify-between items-center mt-auto">
-                                        <button type="button" className="btn btn-primary font-bold  mt-5" disabled={data?.availableSeats === 0 && true} onClick={() => handleApprove(data?._id)}>
+                                    <div className="flex justify-between items-center mt-auto ">
+                                        <button
+                                            type="button"
+                                            className="btn btn-primary font-bold  mt-5"
+                                            disabled={data?.availableSeats === 0 || data?.status === 'denied' || (data.status === 'approved' && true)}
+                                            onClick={() => handleApprove(data?._id)}>
                                             Approve
                                         </button>
-                                        <button type="button" className="btn btn-error font-bold  mt-5" disabled={data?.availableSeats === 0 && true} onClick={() => handleDeny(data?._id)}>
+                                        <button
+                                            type="button"
+                                            className="btn btn-error font-bold  mt-5"
+                                            disabled={data?.availableSeats === 0 || data?.status === 'denied' || (data.status === 'approved' && true)}
+                                            onClick={() => handleDeny(data?._id)}>
                                             Deny
                                         </button>
                                         <label

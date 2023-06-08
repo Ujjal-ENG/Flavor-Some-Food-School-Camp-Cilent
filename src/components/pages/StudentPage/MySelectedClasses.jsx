@@ -45,10 +45,11 @@ const MySelectedClasses = () => {
                 confirmButtonText: 'Yes, delete it!'
             });
             if (result.isConfirmed) {
-                const { data } = await axiosSecure.delete(`/selected-classes/${userInfo?.email}`);
+                const { data } = await axiosSecure.delete(`/selected-classes/${id}`);
                 if (data) {
                     Swal.fire('Deleted!', 'Your file has been deleted.', 'success');
                     setIsLoading(false);
+                    refetch();
                 }
             }
         } catch (error) {

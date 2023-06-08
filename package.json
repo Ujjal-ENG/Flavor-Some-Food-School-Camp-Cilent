@@ -11,6 +11,8 @@
         "lint": "yarn add -D prettier && yarn add -D babel-eslint && npx install-peerdeps --dev eslint-config-airbnb && yarn add -D eslint-config-prettier eslint-plugin-prettier"
     },
     "dependencies": {
+        "@stripe/react-stripe-js": "^2.1.0",
+        "@stripe/stripe-js": "^1.54.0",
         "@tanstack/react-query": "^4.29.12",
         "axios": "^1.4.0",
         "firebase": "^9.22.1",

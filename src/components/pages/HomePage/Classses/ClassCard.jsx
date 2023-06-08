@@ -1,16 +1,18 @@
+/* eslint-disable max-len */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-indent-props */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAdmin from '../../../../hooks/useAdmin';
 import useAuth from '../../../../hooks/useAuth';
 import useInstructor from '../../../../hooks/useInstructor';
 
 const ClassCard = ({ data }) => {
+    const [isClicked, setIsClicked] = useState(null);
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const { userInfo } = useAuth();
@@ -23,6 +25,7 @@ const ClassCard = ({ data }) => {
             });
         } else {
             console.log(id);
+            setIsClicked(id);
         }
     };
     return (
@@ -52,7 +55,7 @@ const ClassCard = ({ data }) => {
                     <button
                         type="button"
                         className="btn btn-primary font-bold btn-block mt-5"
-                        disabled={(data?.availableSeats === 0 || isAdmin || isInstructor) && true}
+                        disabled={(data?.availableSeats === 0 || isAdmin || isInstructor || isClicked === data._id) && true}
                         onClick={() => handleSelectClasses(data._id)}>
                         Select Class!!
                     </button>

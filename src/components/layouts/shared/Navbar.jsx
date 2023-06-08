@@ -18,7 +18,7 @@ import useStudent from '../../../hooks/useStudent';
 
 const Navbar = () => {
     const { userInfo, logOutUser } = useAuth();
-    const [selectedClass, isLoading, refetch] = useSelectedClasses();
+    const [selectedClass] = useSelectedClasses();
     const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();

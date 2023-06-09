@@ -20,7 +20,7 @@ const ManageUsers = () => {
 
     useEffect(() => {
         setIsLoading(true);
-        axiosSecure.get('/users').then(({ data }) => {
+        axiosSecure.get('/users-admin').then(({ data }) => {
             setIsLoading(false);
             return setUsers(data.data);
         });

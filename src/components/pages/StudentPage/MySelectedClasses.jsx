@@ -10,15 +10,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import useSelectedClasses from '../../../hooks/useSelectedClasses';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
 const MySelectedClasses = () => {
     const [loading, setIsLoading] = useState(false);
-    const [selectedClass, isLoading, refetch] = useSelectedClasses();
+    // const [selectedClass, isLoading, refetch] = useSelectedClasses();
     const [axiosSecure] = useAxiosSecure();
-
+    const { userInfo } = useAuth();
+    const {
+        data: selectedClass = [],
+        isLoading,
+        refetch
+    } = useQuery({
+        queryKey: ['selected-classes'],
+        enabled: !!userInfo?.email,
+        queryFn: async () => {
+            const { data } = await axiosSecure.get(`/selected-classes/${userInfo?.email}`);
+            return data.data;
+        }
+    });
     const handleDeleteClasses = async (id) => {
         setIsLoading(true);
         try {

@@ -56,7 +56,7 @@ function Register() {
                     icon: 'success',
                     text: 'User Registered Successfully!!'
                 });
-                await axios.post('http://localhost:8080/users', { name: user?.user?.displayName, email: user?.user?.email });
+                await axios.post('http://localhost:8080/users', { name: user?.user?.displayName, email: user?.user?.email, image: user?.user?.photoURL });
 
                 await signOut(auth);
                 navigate('/login');

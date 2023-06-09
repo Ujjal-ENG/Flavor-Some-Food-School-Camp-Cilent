@@ -6,22 +6,21 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useEffect, useState } from 'react';
-import { HiShoppingBag } from 'react-icons/hi';
 import Lottie from 'react-lottie';
 import { Link, NavLink } from 'react-router-dom';
 import animationData from '../../../assets/json/logo.json';
 import useAdmin from '../../../hooks/useAdmin';
 import useAuth from '../../../hooks/useAuth';
 import useInstructor from '../../../hooks/useInstructor';
-import useSelectedClasses from '../../../hooks/useSelectedClasses';
 import useStudent from '../../../hooks/useStudent';
 
 const Navbar = () => {
     const { userInfo, logOutUser } = useAuth();
-    const [selectedClass] = useSelectedClasses();
+    // const [selectedClass] = useSelectedClasses();
     const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
+    console.log(userInfo);
     const navItems = (
         <div className="uppercase text-xl md:text-2xl flex md:flex-row flex-col items-center gap-5">
             <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : 'default')}>
@@ -81,12 +80,12 @@ const Navbar = () => {
                     Login
                 </NavLink>
             )}
-            {isStudent && (
+            {/* {isStudent && (
                 <Link to="/dashboard/my-selected-classes" type="button" className="btn relative">
                     <HiShoppingBag className="text-5xl" />
                     <div className="badge badge-primary absolute top-0 -right-3 font-bold text-xl">+{selectedClass.length || 0}</div>
                 </Link>
-            )}
+            )} */}
         </div>
     );
 

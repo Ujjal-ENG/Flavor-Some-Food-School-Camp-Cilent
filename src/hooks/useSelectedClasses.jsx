@@ -12,7 +12,7 @@ const useSelectedClasses = () => {
         refetch
     } = useQuery({
         queryKey: ['selected-classes'],
-        enabled: !!userInfo?.email && !privateLoad,
+        enabled: !!userInfo?.email,
         queryFn: async () => {
             const { data } = await axiosSecure.get(`/selected-classes/${userInfo?.email}`);
             return data.data;

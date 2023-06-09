@@ -9,7 +9,7 @@ import React from 'react';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { HiClipboardCheck } from 'react-icons/hi';
 import { MdManageAccounts, MdOutlineManageAccounts } from 'react-icons/md';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, ScrollRestoration } from 'react-router-dom';
 import Typed from 'react-typed';
 import useAdmin from '../../../hooks/useAdmin';
 import useAuth from '../../../hooks/useAuth';
@@ -174,6 +174,7 @@ const DashboardLayout = () => {
                 </div>
                 <div className="col-span-2">
                     <Outlet />
+                    <ScrollRestoration />
                 </div>
             </div>
             <Footer />

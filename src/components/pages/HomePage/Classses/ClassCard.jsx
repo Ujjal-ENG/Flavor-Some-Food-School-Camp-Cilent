@@ -6,6 +6,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import useAdmin from '../../../../hooks/useAdmin';
@@ -41,8 +42,20 @@ const ClassCard = ({ data }) => {
         }
     };
     return (
-        <div>
-            <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>
+        <motion.div
+            initial={{ y: 1000, opacity: 0, scale: 0.5 }}
+            animate={{ y: 0, opacity: 1, scale: 1 }}
+            transition={{
+                duration: 1.5,
+                ease: [0, 0.71, 0.2, 1.01],
+                scale: {
+                    type: 'spring',
+                    damping: 25,
+                    stiffness: 100,
+                    restDelta: 0.001
+                }
+            }}>
+            <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow duration-200 transition-all ease-in-out hover:shadow-2xl`}>
                 <div className="p-5">
                     <div className="relative">
                         <a href="#" title="" className="block ">
@@ -73,7 +86,7 @@ const ClassCard = ({ data }) => {
                     </button>
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

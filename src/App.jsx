@@ -33,7 +33,6 @@ const App = () => {
         };
     }, [isLoading]);
 
-    console.log(isLoading);
     if (isLoading) {
         return (
             <div className="flex flex-col items-center h-screen w-screen">

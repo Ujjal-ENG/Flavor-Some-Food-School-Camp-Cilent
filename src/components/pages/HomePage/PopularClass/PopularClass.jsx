@@ -8,10 +8,10 @@ const PopularClass = () => {
     useEffect(() => {
         axios.get('http://localhost:8080/all-classes').then(({ data }) => setClasses(data.data));
     }, []);
-    console.log(classes);
+    // console.log(classes);
     return (
         <div>
-            <SharedTitle title1="Popular" title2="Classes" />
+            <SharedTitle title1="Popular " title2="Classes" />
             <PopularSlider classes={classes} />
         </div>
     );

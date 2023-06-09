@@ -19,6 +19,7 @@ import AdminRoutes from './AdminRoutes';
 import InstructorRoutes from './InstructorRoutes';
 import PrivateRoutes from './PrivateRoute';
 import StudentRoutes from './StudentRoutes';
+import AllInstructors from '../components/pages/HomePage/Instructors/AllInstructors';
 
 export const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
             {
                 path: '/all-classes',
                 element: <AllClasses />
+            },
+            {
+                path: '/all-instructors',
+                element: <AllInstructors />
             },
             {
                 path: '/login',

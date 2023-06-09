@@ -29,7 +29,7 @@ const ManageClasses = () => {
         queryKey: ['classes'],
         enabled: !!userInfo?.email || !privateLoad,
         queryFn: async () => {
-            const { data } = await axiosSecure('/classes');
+            const { data } = await axiosSecure('/all-classes-admin');
             return data.data;
         }
     });

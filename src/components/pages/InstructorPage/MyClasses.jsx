@@ -8,6 +8,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
@@ -30,7 +31,7 @@ const MyClasses = () => {
             <Helmet>
                 <title>F|Food|School - My Classes</title>
             </Helmet>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-7 -ml-0 md:-ml-60">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-7 -ml-0 md:-ml-60 py-10">
                 {allClasses &&
                     allClasses.map((data) => {
                         return (
@@ -68,10 +69,14 @@ const MyClasses = () => {
                                             </h5>
                                         )}
                                     </div>
-
-                                    <button type="button" className="btn btn-primary font-bold btn-block mt-5" disabled={data?.status === 'approved' && true}>
+                                    <Link
+                                        to="/dashboard/my-classes/update-classes"
+                                        state={data}
+                                        type="button"
+                                        className="btn btn-primary font-bold btn-block "
+                                        disabled={data?.status === 'approved' && true}>
                                         Update Class
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         );

@@ -20,6 +20,7 @@ import InstructorRoutes from './InstructorRoutes';
 import PrivateRoutes from './PrivateRoute';
 import StudentRoutes from './StudentRoutes';
 import AllInstructors from '../components/pages/HomePage/Instructors/AllInstructors';
+import UpdateClass from '../components/pages/InstructorPage/UpdatePage';
 
 export const router = createBrowserRouter([
     {
@@ -111,6 +112,14 @@ export const router = createBrowserRouter([
                 element: (
                     <InstructorRoutes>
                         <MyClasses />
+                    </InstructorRoutes>
+                )
+            },
+            {
+                path: '/dashboard/my-classes/update-classes',
+                element: (
+                    <InstructorRoutes>
+                        <UpdateClass />
                     </InstructorRoutes>
                 )
             }

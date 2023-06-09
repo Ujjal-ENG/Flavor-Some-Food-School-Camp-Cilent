@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable react/jsx-closing-bracket-location */
 /* eslint-disable operator-linebreak */
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable jsx-a11y/anchor-is-valid */
@@ -32,7 +34,7 @@ export default function PopularSlider({ classes }) {
                 },
                 '@0.75': {
                     slidesPerView: 1,
-                    spaceBetween: 20
+                    spaceBetween: 10
                 },
                 '@1.00': {
                     slidesPerView: 2,
@@ -51,12 +53,9 @@ export default function PopularSlider({ classes }) {
                         <div className="overflow-hidden bg-white rounded shadow-2xl">
                             <div className="p-5">
                                 <div className="relative">
-                                    <a href="#" title="" className="block ">
-                                        <img className="object-cover w-96 h-72" src={data?.image} alt={data?.name} />
-                                    </a>
-
+                                    <img className="object-cover w-96  h-40" src={data?.image} alt={data?.name} />
                                     <div className="absolute top-4 right-6">
-                                        <span className="px-4 py-2 text-2xl font-semibold tracking-widest text-white uppercase bg-black rounded-full">${data?.price} </span>
+                                        <span className="px-4 py-2 text-2xl font-semibold tracking-widest text-white uppercase bg-purple-500 rounded-full">Popular</span>
                                     </div>
                                 </div>
 
@@ -64,9 +63,6 @@ export default function PopularSlider({ classes }) {
                                 <div>
                                     <h5 className="text-2xl font-bold py-5">
                                         Instructor: <span className="text-primary">{data?.instructor}</span>
-                                    </h5>
-                                    <h5 className="text-xl font-bold py-2">
-                                        AvailableSeats: <span className="text-primary">{data?.availableSeats}</span>
                                     </h5>
                                 </div>
                             </div>

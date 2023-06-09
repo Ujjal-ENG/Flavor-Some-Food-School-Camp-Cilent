@@ -94,12 +94,6 @@ const Navbar = () => {
                     Login
                 </NavLink>
             )}
-            {/* {isStudent && (
-                <Link to="/dashboard/my-selected-classes" type="button" className="btn relative">
-                    <HiShoppingBag className="text-5xl" />
-                    <div className="badge badge-primary absolute top-0 -right-3 font-bold text-xl">+{selectedClass.length || 0}</div>
-                </Link>
-            )} */}
 
             <div>
                 <label htmlFor="themeToggle" className="swap swap-rotate">

@@ -10,7 +10,7 @@ const AllInstructors = () => {
     useEffect(() => {
         axios.get('http://localhost:8080/all-instructors').then(({ data }) => setAllInstructors(data.data));
     }, []);
-    console.log(allInstructors);
+
     return (
         <div className="pt-20">
             <SharedTitle title1="All  " title2="Instructors" />

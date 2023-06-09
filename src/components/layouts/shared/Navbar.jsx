@@ -47,24 +47,30 @@ const Navbar = () => {
                             <img alt={userInfo?.displayName} src={userInfo?.photoURL} />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="mt-3 md:flex justify-center items-center hidden  shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
-                        <li>
-                            {isStudent && (
+                    <ul tabIndex={0} className="mt-3 p-2  md:flex  hidden  shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-60 space-y-5">
+                        {isStudent && (
+                            <li>
                                 <Link to="/dashboard/my-selected-classes" className="justify-between text-center btn btn-block">
                                     Dashboard
                                 </Link>
-                            )}
-                            {isAdmin && (
+                            </li>
+                        )}
+
+                        {isAdmin && (
+                            <li>
                                 <Link to="/dashboard/manage-classes" className="justify-between text-center btn btn-block">
                                     Dashboard
                                 </Link>
-                            )}
-                            {isInstructor && (
+                            </li>
+                        )}
+
+                        {isInstructor && (
+                            <li>
                                 <Link to="/dashboard/add-a-class" className="justify-between text-center btn btn-block">
                                     Dashboard
                                 </Link>
-                            )}
-                        </li>
+                            </li>
+                        )}
 
                         <li>
                             <button type="button" className="btn btn-primary btn-block text-black" onClick={() => logOutUser()}>

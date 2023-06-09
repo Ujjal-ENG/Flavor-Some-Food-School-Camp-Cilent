@@ -16,9 +16,14 @@ const ManageUsers = () => {
     const [isClicked, setIclicked] = useState(false);
     const [users, setUsers] = useState([]);
     const [axiosSecure] = useAxiosSecure();
+    const [loading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        axiosSecure.get('/users').then(({ data }) => setUsers(data.data));
+        setIsLoading(true);
+        axiosSecure.get('/users').then(({ data }) => {
+            setIsLoading(false);
+            return setUsers(data.data);
+        });
     }, [isClicked]);
 
     const handeleInstrcutor = async (id) => {
@@ -77,11 +82,16 @@ const ManageUsers = () => {
             <Helmet>
                 <title>F|Food|School - Manage Users</title>
             </Helmet>
-            <div className="overflow-x-auto">
-                <table className="table z-10 table-zebra max-w-5xl mx-auto text-xl font-semibold text-center">
+            <div className="overflow-x-auto py-10">
+                {loading && (
+                    <div className="h-screen flex justify-center items-center">
+                        <progress className="progress w-56" />
+                    </div>
+                )}
+                <table className="table  table-zebra max-w-5xl mx-auto text-xl font-semibold text-center">
                     {/* head */}
                     <thead>
-                        <tr>
+                        <tr className="text-xl">
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role of the User</th>

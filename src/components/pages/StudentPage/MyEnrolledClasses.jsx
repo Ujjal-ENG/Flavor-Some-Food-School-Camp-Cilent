@@ -5,6 +5,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
@@ -12,7 +13,7 @@ import SharedTitle from '../../layouts/shared/SharedTitle';
 const MyEnrolledClasses = () => {
     const { userInfo, privateLoad } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { data: enrolledClass = [] } = useQuery({
+    const { data: enrolledClass = [], isLoading: loading } = useQuery({
         queryKey: ['enrolled-classes'],
         enabled: !!userInfo?.email || !privateLoad,
         queryFn: async () => {
@@ -21,12 +22,25 @@ const MyEnrolledClasses = () => {
         }
     });
 
+    const handleDetails = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'We are working on this page please next Update, we will included this page, till now please wait!!'
+        });
+    };
+
     return (
         <div>
             <SharedTitle title1="My" title2="Enrolled Classes" />
             <Helmet>
                 <title>F|Food|School - My Enrolled Classes</title>
             </Helmet>
+            {loading && (
+                <div className="h-screen flex justify-center items-center">
+                    <progress className="progress w-56" />
+                </div>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-10 py-10">
                 {enrolledClass.length <= 0 ? (
                     <SharedTitle title1="Your Have not" title2="Enrolled or Payment any Classes!!" />
@@ -40,7 +54,7 @@ const MyEnrolledClasses = () => {
                                     </a>
 
                                     <div className="absolute top-4 right-6">
-                                        <span className="px-4 py-2 text-2xl font-semibold tracking-widest text-white uppercase bg-black rounded-full">${data?.price} </span>
+                                        <span className="px-4 py-2 text-2xl font-semibold tracking-widest text-white uppercase bg-green-600 rounded-full">Enrolled</span>
                                     </div>
                                 </div>
 
@@ -53,6 +67,9 @@ const MyEnrolledClasses = () => {
                                     </h5>
                                 </div>
                             </div>
+                            <button type="button" className="btn btn-block btn-success" onClick={handleDetails}>
+                                View Class
+                            </button>
                         </div>
                     ))
                 )}

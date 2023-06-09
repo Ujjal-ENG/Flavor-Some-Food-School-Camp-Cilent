@@ -15,19 +15,25 @@ const App = () => {
             preserveAspectRatio: 'xMidYMid slice'
         }
     };
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(document.readyState !== 'complete');
 
     useEffect(() => {
         const handlePageLoad = () => {
             setIsLoading(false);
         };
 
-        window.addEventListener('load', handlePageLoad);
+        if (!isLoading) {
+            handlePageLoad();
+        } else {
+            window.addEventListener('load', handlePageLoad);
+        }
 
         return () => {
             window.removeEventListener('load', handlePageLoad);
         };
-    }, []);
+    }, [isLoading]);
+
+    console.log(isLoading);
     if (isLoading) {
         return (
             <div className="flex flex-col items-center h-screen w-screen">
@@ -35,6 +41,7 @@ const App = () => {
             </div>
         );
     }
+
     return (
         <>
             <Navbar />

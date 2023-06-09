@@ -21,7 +21,11 @@ const ManageClasses = () => {
     const { userInfo, privateLoad } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const [idFeedBack, setIdFeedBack] = useState(null);
-    const { data: classes = [], refetch } = useQuery({
+    const {
+        data: classes = [],
+        refetch,
+        isLoading: loading
+    } = useQuery({
         queryKey: ['classes'],
         enabled: !!userInfo?.email || !privateLoad,
         queryFn: async () => {
@@ -85,7 +89,12 @@ const ManageClasses = () => {
             <Helmet>
                 <title>F|Food|School - Manage Classes</title>
             </Helmet>
-            <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12 py-10 z-30">
+            {loading && (
+                <div className="h-screen flex justify-center items-center">
+                    <progress className="progress w-56" />
+                </div>
+            )}
+            <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12 py-10 ">
                 {classes &&
                     classes.map((data) => {
                         return (

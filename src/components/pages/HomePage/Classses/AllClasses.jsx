@@ -3,6 +3,7 @@
 /* eslint-disable max-len */
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import ClassCard from './ClassCard';
 
 const AllClasses = () => {
@@ -18,6 +19,9 @@ const AllClasses = () => {
 
     return (
         <div className="pt-24">
+            <Helmet>
+                <title>F|Food|School - All Classes</title>
+            </Helmet>
             <div className="flex-1 text-center lg:text-left">
                 <h2 className="text-3xl font-bold pt-5 leading-tight text-black sm:text-4xl lg:text-5xl">All Classes from the all Instructors</h2>
                 <p className="max-w-2xl mx-auto mt-4 text-xl leading-relaxed text-gray-600 lg:mx-0">

@@ -13,6 +13,7 @@ import axios from 'axios';
 import { getAuth, signOut, updateProfile } from 'firebase/auth';
 import { useState } from 'react';
 import GoogleButton from 'react-google-button';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
@@ -107,6 +108,9 @@ function Register() {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 my-container gap-7 ">
+            <Helmet>
+                <title>F|Food|School - Register</title>
+            </Helmet>
             <div className="min-h-screen shadow-xl duration-200 transition-shadow ease-in-out hover:shadow-2xl flex justify-center items-center order-2 md:order-1">
                 <div className="max-w-xl w-full mx-auto">
                     <div className="text-center font-bold text-gray-700 text-3xl mb-6">Sign up</div>

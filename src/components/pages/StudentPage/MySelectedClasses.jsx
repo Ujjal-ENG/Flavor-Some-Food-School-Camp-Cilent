@@ -8,6 +8,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable comma-dangle */
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
@@ -63,7 +64,10 @@ const MySelectedClasses = () => {
 
     return (
         <div>
-            <SharedTitle title1="My" title2="Selected Classes" />
+            <SharedTitle title1="My  " title2="Selected Classes" />
+            <Helmet>
+                <title>F|Food|School - My Selected Classes</title>
+            </Helmet>
             {isLoading && (
                 <div className="h-screen flex justify-center items-center">
                     <progress className="progress w-56" />

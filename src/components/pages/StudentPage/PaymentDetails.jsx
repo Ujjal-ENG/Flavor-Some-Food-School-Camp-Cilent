@@ -2,6 +2,7 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 import CheckoutForm from './CheckOutFrom';
@@ -23,7 +24,10 @@ const PaymentDetails = () => {
 
     return (
         <div>
-            <SharedTitle title1="Payment" title2="Details" />
+            <SharedTitle title1="Payment " title2=" Details" />
+            <Helmet>
+                <title>F|Food|School - Payment</title>
+            </Helmet>
             <Elements stripe={stripePromise} options={ELEMENTS_OPTIONS}>
                 <CheckoutForm data={state} />
             </Elements>

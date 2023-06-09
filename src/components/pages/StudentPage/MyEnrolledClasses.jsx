@@ -4,6 +4,7 @@
 /* eslint-disable no-underscore-dangle */
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
@@ -23,6 +24,9 @@ const MyEnrolledClasses = () => {
     return (
         <div>
             <SharedTitle title1="My" title2="Enrolled Classes" />
+            <Helmet>
+                <title>F|Food|School - My Enrolled Classes</title>
+            </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-10 py-10">
                 {enrolledClass.length <= 0 ? (
                     <SharedTitle title1="Your Have not" title2="Enrolled or Payment any Classes!!" />

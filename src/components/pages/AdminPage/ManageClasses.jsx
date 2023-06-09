@@ -10,6 +10,7 @@
 /* eslint-disable comma-dangle */
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
@@ -80,8 +81,10 @@ const ManageClasses = () => {
 
     return (
         <div>
-            <SharedTitle title1="Manage" title2="Classes" />
-
+            <SharedTitle title1="Manage " title2=" Classes" />
+            <Helmet>
+                <title>F|Food|School - Manage Classes</title>
+            </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12 py-10 z-30">
                 {classes &&
                     classes.map((data) => {

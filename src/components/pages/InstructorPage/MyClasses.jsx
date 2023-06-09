@@ -7,6 +7,7 @@
 /* eslint-disable comma-dangle */
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
@@ -25,7 +26,10 @@ const MyClasses = () => {
 
     return (
         <div>
-            <SharedTitle title1="My" title2="Classes" />
+            <SharedTitle title1="My  " title2="Classes" />
+            <Helmet>
+                <title>F|Food|School - My Classes</title>
+            </Helmet>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-7 -ml-0 md:-ml-60">
                 {allClasses &&
                     allClasses.map((data) => {

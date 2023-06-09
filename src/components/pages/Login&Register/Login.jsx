@@ -12,6 +12,7 @@
 import axios from 'axios';
 import { useState } from 'react';
 import GoogleButton from 'react-google-button';
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
@@ -86,6 +87,9 @@ function Login() {
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 my-container ">
+            <Helmet>
+                <title>F|Food|School - Login</title>
+            </Helmet>
             <div className="shadow-2xl rounded-md flex flex-col justify-center py-12 sm:px-6 lg:px-8 order-2 md:order-1">
                 <div className="sm:mx-auto sm:w-full sm:max-w-md">
                     <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900" data-aos="fade-up">

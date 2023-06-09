@@ -5,6 +5,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/jsx-indent-props */
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { MdEmojiPeople } from 'react-icons/md';
 import { RiAdminFill } from 'react-icons/ri';
 import Swal from 'sweetalert2';
@@ -72,7 +73,10 @@ const ManageUsers = () => {
     };
     return (
         <div>
-            <SharedTitle title1="Mange" title2="Users" />
+            <SharedTitle title1="Manage " title2=" Users" />
+            <Helmet>
+                <title>F|Food|School - Manage Users</title>
+            </Helmet>
             <div className="overflow-x-auto">
                 <table className="table z-10 table-zebra max-w-5xl mx-auto text-xl font-semibold text-center">
                     {/* head */}

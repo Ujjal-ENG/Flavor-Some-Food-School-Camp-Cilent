@@ -7,6 +7,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 
+import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { AiFillFileAdd } from 'react-icons/ai';
 import Swal from 'sweetalert2';
@@ -63,7 +64,10 @@ const AddaClass = () => {
     };
     return (
         <div>
-            <SharedTitle title1="Add a" title2="New Class" />
+            <SharedTitle title1="Add A  " title2="New Class" />
+            <Helmet>
+                <title>F|Food|School - Add A Class</title>
+            </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className=" bg-slate-200 max-w-3xl p-10  rounded-md w-full space-y-9">
                 <div className="w-full">
                     <label className="label">

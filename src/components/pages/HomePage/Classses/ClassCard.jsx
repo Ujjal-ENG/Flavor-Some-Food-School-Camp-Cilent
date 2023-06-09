@@ -55,7 +55,7 @@ const ClassCard = ({ data }) => {
                     restDelta: 0.001
                 }
             }}>
-            <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow duration-200 transition-all ease-in-out hover:shadow-2xl`}>
+            <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow duration-300 transition-all ease-in-out hover:shadow-2xl`}>
                 <div className="p-5">
                     <div className="relative">
                         <a href="#" title="" className="block ">

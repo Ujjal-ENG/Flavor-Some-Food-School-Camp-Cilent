@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 import React, { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
 import { Outlet, ScrollRestoration } from 'react-router-dom';

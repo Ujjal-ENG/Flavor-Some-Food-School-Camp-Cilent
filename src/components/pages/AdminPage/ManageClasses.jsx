@@ -120,10 +120,10 @@ const ManageClasses = () => {
                 ) : (
                     classes.map((data) => {
                         return (
-                            <div key={data._id} className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow-xl`}>
+                            <div className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow-xl`}>
                                 <div className="p-5">
                                     <div className="relative">
-                                        <a href="#" title="" className="block">
+                                        <a whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} key={data._id} href="#" title="" className="block">
                                             <img className="object-cover max-w-2xl w-full h-72" src={data?.image} alt={data?.name} />
                                         </a>
 

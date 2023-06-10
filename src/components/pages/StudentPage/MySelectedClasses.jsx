@@ -83,7 +83,7 @@ const MySelectedClasses = () => {
                             <div className="p-5">
                                 <div className="relative">
                                     <a href="#" title="" className="block ">
-                                        <img className="object-cover w-96 h-72" src={data?.image} alt={data?.name} />
+                                        <img className="object-cover w-full h-72" src={data?.image} alt={data?.name} />
                                     </a>
 
                                     <div className="absolute top-4 right-6">

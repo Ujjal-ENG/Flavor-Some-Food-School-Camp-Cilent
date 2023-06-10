@@ -53,7 +53,7 @@ export default function PopularSlider({ classes }) {
                         <div className="overflow-hidden bg-white rounded shadow-2xl">
                             <div className="p-5">
                                 <div className="relative">
-                                    <img className="object-cover w-96  h-40" src={data?.image} alt={data?.name} />
+                                    <img className="object-cover w-full  h-40" src={data?.image} alt={data?.name} />
                                     <div className="absolute top-4 right-6">
                                         <span className="px-4 py-2 text-2xl font-semibold tracking-widest text-white uppercase bg-purple-500 rounded-full">Popular</span>
                                     </div>

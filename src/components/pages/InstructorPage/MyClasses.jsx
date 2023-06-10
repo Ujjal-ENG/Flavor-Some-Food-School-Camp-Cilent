@@ -61,7 +61,7 @@ const MyClasses = () => {
                                             AvailableSeats: <span className="text-primary">{data?.availableSeats}</span>
                                         </h5>
                                         <h5 className="text-xl font-bold py-2">
-                                            Total Enrolled Students: <span className="text-primary">{data?.enrolledStudents}</span>
+                                            Total Enrolled Students: <span className="text-primary">{data?.enrolledStudents || 0}</span>
                                         </h5>
                                         {data?.status === 'denied' && (
                                             <h5 className="text-xl font-bold py-2 text-red-500">

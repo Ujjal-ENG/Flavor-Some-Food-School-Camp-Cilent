@@ -34,10 +34,9 @@ const UpdateClass = () => {
 
     const imgHoistingUrl = `https://api.imgbb.com/1/upload?key=${imgBBKEY}`;
     const onSubmit = async (data) => {
+        setIsLoading(true);
         try {
-            setIsLoading(true);
             const fromData = new FormData();
-
             const price = parseInt(data.price, 10);
             const availableSeats = parseInt(data.availableSeats, 10);
             data.price = price;
@@ -47,7 +46,7 @@ const UpdateClass = () => {
             fromData.append('image', data.image[0]);
 
             const res = await axios.post(imgHoistingUrl, fromData);
-
+            console.log(res);
             if (res) {
                 const imgURL = res.data.data.display_url;
                 data.image = imgURL;
@@ -157,13 +156,13 @@ const UpdateClass = () => {
                         <label className="label">
                             <span className="label-text font-bold text-black">Class Image*</span>
                         </label>
-                        <input {...register('image', { required: true })} type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+                        <input {...register('image')} type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                     </div>
                     <div>
                         <label className="label">
                             <span className="label-text font-bold text-black">Preview Previous Image*</span>
                         </label>
-                        <img src={state?.image} alt="preivew" className="object-cover w-full h-32" />
+                        <img src={state?.image} alt="preview" className="object-cover w-full h-32" />
                     </div>
                 </div>
 

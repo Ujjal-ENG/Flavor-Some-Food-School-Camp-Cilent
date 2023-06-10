@@ -61,23 +61,23 @@ const MyClasses = () => {
                                             AvailableSeats: <span className="text-primary">{data?.availableSeats}</span>
                                         </h5>
                                         <h5 className="text-xl font-bold py-2">
-                                            Total Enrolled Students: <span className="text-primary">0</span>
+                                            Total Enrolled Students: <span className="text-primary">{data?.enrolledStudents}</span>
                                         </h5>
-                                        {(data?.status === 'denied' || data?.status === 'approved') && (
+                                        {data?.status === 'denied' && (
                                             <h5 className="text-xl font-bold py-2 text-red-500">
                                                 FeedBack: <span className="text-primary">{data?.feedback}</span>
                                             </h5>
                                         )}
                                     </div>
-                                    <Link
-                                        to="/dashboard/my-classes/update-classes"
-                                        state={data}
-                                        type="button"
-                                        className="btn btn-primary font-bold btn-block "
-                                        disabled={data?.status === 'approved' && true}>
-                                        Update Class
-                                    </Link>
                                 </div>
+                                <Link
+                                    to="/dashboard/my-classes/update-classes"
+                                    state={data}
+                                    type="button"
+                                    className="btn btn-primary font-bold btn-block my-auto"
+                                    disabled={data?.status === 'approved' && true}>
+                                    Update Class
+                                </Link>
                             </div>
                         );
                     })}

@@ -147,7 +147,7 @@ const ManageClasses = () => {
                                             onClick={() => {
                                                 handleFeedback(data._id);
                                             }}
-                                            disabled={data?.availableSeats === 0 && true}>
+                                            disabled={data?.availableSeats === 0 || data.status === 'approved' || (data.status === 'pending' && true)}>
                                             FeedBack
                                         </label>
                                     </div>

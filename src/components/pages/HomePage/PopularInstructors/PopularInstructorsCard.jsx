@@ -7,7 +7,7 @@ import Marquee from 'react-fast-marquee';
 const PopularInstructorsCard = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8080/popular-instructors').then(({ data }) => setClasses(data.data));
+        axios.get('https://flavorsome-food-school-server.vercel.app/popular-instructors').then(({ data }) => setClasses(data.data));
     }, []);
 
     return (

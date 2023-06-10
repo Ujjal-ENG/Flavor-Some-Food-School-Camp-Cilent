@@ -57,7 +57,7 @@ function Register() {
                     icon: 'success',
                     text: 'User Registered Successfully!!'
                 });
-                await axios.post('http://localhost:8080/users', { name: user?.user?.displayName, email: user?.user?.email, image: user?.user?.photoURL });
+                await axios.post('https://flavorsome-food-school-server.vercel.app/users', { name: user?.user?.displayName, email: user?.user?.email, image: user?.user?.photoURL });
 
                 await signOut(auth);
                 navigate('/login');
@@ -83,7 +83,7 @@ function Register() {
                     title: 'Oops...',
                     text: 'User Successfully Registered and LoggedIn!!'
                 });
-                await axios.post('http://localhost:8080/users', { name: user?.displayName, email: user?.email });
+                await axios.post('https://flavorsome-food-school-server.vercel.app/users', { name: user?.displayName, email: user?.email });
                 navigate(from);
                 setIsLoading(false);
             }

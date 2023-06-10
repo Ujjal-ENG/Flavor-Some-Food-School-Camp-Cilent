@@ -6,7 +6,7 @@ import PopularSlider from './PopularSlider';
 const PopularClass = () => {
     const [classes, setClasses] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:8080/all-classes-popular').then(({ data }) => setClasses(data.data));
+        axios.get('https://flavorsome-food-school-server.vercel.app/all-classes-popular').then(({ data }) => setClasses(data.data));
     }, []);
     // console.log(classes);
     return (

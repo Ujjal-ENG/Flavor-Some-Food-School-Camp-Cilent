@@ -6,12 +6,22 @@ import Marquee from 'react-fast-marquee';
 
 const PopularInstructorsCard = () => {
     const [classes, setClasses] = useState([]);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
-        axios.get('https://flavorsome-food-school-server.vercel.app/popular-instructors').then(({ data }) => setClasses(data.data));
+        setLoading(true);
+        axios.get('https://flavorsome-food-school-server.vercel.app/popular-instructors').then(({ data }) => {
+            setLoading(false);
+            return setClasses(data.data);
+        });
     }, []);
 
     return (
         <Marquee>
+            {loading && (
+                <div className="h-screen flex justify-center items-center">
+                    <progress className="progress w-56" />
+                </div>
+            )}
             {classes &&
                 classes.map((data) => (
                     <div key={data?._id} className="card w-96 bg-base-100 shadow-xl mx-20 mt-10 mb-20">

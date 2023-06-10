@@ -19,7 +19,7 @@ const Navbar = () => {
     const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-
+    // const [selectedClass] = useSelectedClasses();
     const [theme, setTheme] = useState('light');
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);
@@ -94,6 +94,12 @@ const Navbar = () => {
                     Login
                 </NavLink>
             )}
+            {/* {isStudent && (
+                <Link to={"/dashboard/my-selected-classes"} className="btn">
+                    <HiShoppingCart size={24} />
+                    <div className="badge badge-primary">+{selectedClass?.length || 0}</div>
+                </Link>
+            )} */}
 
             <div>
                 <label htmlFor="themeToggle" className="swap swap-rotate">

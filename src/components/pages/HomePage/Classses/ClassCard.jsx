@@ -20,6 +20,7 @@ const ClassCard = ({ data }) => {
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
     const { userInfo } = useAuth();
+    // const [refetch] = useSelectedClasses();
     const handleSelectClasses = async (classes) => {
         if (!userInfo?.email && !isInstructor) {
             Swal.fire({
@@ -31,6 +32,7 @@ const ClassCard = ({ data }) => {
             classes.studentEmail = userInfo.email;
             classes.classId = data._id;
             const res = await axiosSecure.post('/selected-classes', classes);
+            // refetch();
             if (res.data) {
                 Swal.fire({
                     icon: 'success',

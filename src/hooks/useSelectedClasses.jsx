@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable comma-dangle */
 import { useQuery } from '@tanstack/react-query';
 import useAuth from './useAuth';
@@ -6,19 +7,19 @@ import useAxiosSecure from './useAxiosSecure';
 const useSelectedClasses = () => {
     const { userInfo, privateLoad } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const {
-        data: selectedClass = [],
-        isLoading,
-        refetch
-    } = useQuery({
+    const { data: selectedClass = [], refetch } = useQuery({
         queryKey: ['selected-classes'],
-        enabled: !!userInfo?.email,
+        enabled: !!userInfo?.email && !!localStorage.getItem('token') && !privateLoad,
         queryFn: async () => {
-            const { data } = await axiosSecure.get(`/selected-classes/${userInfo?.email}`);
-            return data.data;
+            try {
+                const { data } = await axiosSecure.get(`/selected-classes/${userInfo?.email}`);
+                if (data.success) return data.data;
+            } catch (error) {
+                console.log(error);
+            }
         }
     });
-    return [selectedClass, isLoading, refetch];
+    return [selectedClass, refetch];
 };
 
 export default useSelectedClasses;

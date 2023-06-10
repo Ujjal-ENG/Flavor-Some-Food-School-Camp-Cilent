@@ -15,7 +15,7 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
-const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
+const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY1;
 
 const AddaClass = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -44,10 +44,9 @@ const AddaClass = () => {
 
             const res = await axios.post(imgHoistingUrl, fromData);
             if (res) {
-                const imgURL = res.data.data.display_url;
+                const imgURL = res?.data?.data?.display_url;
                 data.image = imgURL;
                 const response = await axiosSecure.post('/classes', data);
-                console.log(response);
                 if (response.data.success) {
                     Swal.fire({
                         icon: 'success',

@@ -5,7 +5,6 @@
 /* eslint-disable react/jsx-indent-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import axios from 'axios';
 import React, { useState } from 'react';
 
 import { Helmet } from 'react-helmet-async';
@@ -16,8 +15,6 @@ import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
-
-const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
 
 const UpdateClass = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -32,35 +29,26 @@ const UpdateClass = () => {
         formState: { errors }
     } = useForm();
 
-    const imgHoistingUrl = `https://api.imgbb.com/1/upload?key=${imgBBKEY}`;
     const onSubmit = async (data) => {
         setIsLoading(true);
         try {
-            const fromData = new FormData();
             const price = parseInt(data.price, 10);
             const availableSeats = parseInt(data.availableSeats, 10);
             data.price = price;
             data.availableSeats = availableSeats;
             data.status = 'pending';
+            data.image = state?.image;
 
-            fromData.append('image', data.image[0]);
+            const response = await axiosSecure.patch(`/classes-instructor/${state?._id}`, data);
 
-            const res = await axios.post(imgHoistingUrl, fromData);
-            console.log(res);
-            if (res) {
-                const imgURL = res.data.data.display_url;
-                data.image = imgURL;
-                const response = await axiosSecure.patch(`/classes/${state?._id}`, data);
-
-                if (response.data.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Classes added Successfully!!'
-                    });
-                    navigate(-1);
-                    reset();
-                    setIsLoading(false);
-                }
+            if (response.data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Class Updated Successfully!!'
+                });
+                navigate(-1);
+                reset();
+                setIsLoading(false);
             }
         } catch (error) {
             setIsLoading(false);
@@ -151,16 +139,10 @@ const UpdateClass = () => {
                     </div>
                 </div>
 
-                <div className="grid grid-cols-2">
+                <div>
                     <div>
                         <label className="label">
-                            <span className="label-text font-bold text-black">Class Image*</span>
-                        </label>
-                        <input {...register('image')} type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
-                    </div>
-                    <div>
-                        <label className="label">
-                            <span className="label-text font-bold text-black">Preview Previous Image*</span>
+                            <span className="label-text font-bold text-black">Preview Image*</span>
                         </label>
                         <img src={state?.image} alt="preview" className="object-cover w-full h-32" />
                     </div>

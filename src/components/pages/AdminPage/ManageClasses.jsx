@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-underscore-dangle */
@@ -9,7 +10,7 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable comma-dangle */
 import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import useAuth from '../../../hooks/useAuth';
@@ -21,17 +22,19 @@ const ManageClasses = () => {
     const { userInfo, privateLoad } = useAuth();
     const [axiosSecure] = useAxiosSecure();
     const [idFeedBack, setIdFeedBack] = useState(null);
+    const [statusFilter, setStatusFilter] = useState('');
     const {
         data: classes = [],
         refetch,
         isLoading: loading
     } = useQuery({
         queryKey: ['classes'],
-        enabled: !!userInfo?.email || !privateLoad,
+        enabled: !!userInfo?.email || !privateLoad || statusFilter,
         queryFn: async () => {
-            const { data } = await axiosSecure('/all-classes-admin');
+            const { data } = await axiosSecure.get(`/all-classes-admin?status=${statusFilter}`);
             return data.data;
-        }
+        },
+        retry: 3
     });
 
     const handleApprove = async (id) => {
@@ -82,6 +85,16 @@ const ManageClasses = () => {
         // console.log(id);
         setIdFeedBack(id);
     };
+    useEffect(() => {
+        if (statusFilter) {
+            // Enable the query when statusFilter is set
+            refetch();
+        }
+    }, [statusFilter]);
+
+    const handleChange = (e) => {
+        setStatusFilter(e.target.value);
+    };
 
     return (
         <div>
@@ -89,13 +102,22 @@ const ManageClasses = () => {
             <Helmet>
                 <title>F|Food|School - Manage Classes</title>
             </Helmet>
+            <select id="statusFilter" value={statusFilter} onChange={handleChange} className="select select-primary w-full max-w-xs">
+                <option disabled>Filter the Classes by Using Status</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="denied">Denied</option>
+            </select>
             {loading && (
                 <div className="h-screen flex justify-center items-center">
                     <progress className="progress w-56" />
                 </div>
             )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 justify-items-center gap-12 py-10 ">
-                {classes &&
+                {classes.length === 0 ? (
+                    <h1 className="text-2xl font-bold tracking-wider py-10 text-red-500">No Data Available for this status!!</h1>
+                ) : (
                     classes.map((data) => {
                         return (
                             <div key={data._id} className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow-xl`}>
@@ -154,7 +176,8 @@ const ManageClasses = () => {
                                 </div>
                             </div>
                         );
-                    })}
+                    })
+                )}
             </div>
             <Modal id={idFeedBack} refetch={refetch} />
         </div>

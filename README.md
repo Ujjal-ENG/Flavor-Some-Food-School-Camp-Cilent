@@ -1,6 +1,3 @@
-
-
-
 # Welcome to Flavorsome|Food Schools Summer Camp!
 
 Are you ready for a fun-filled and flavorful summer adventure? Join us at Flavorsome Food Schools Summer Camp, where young culinary enthusiasts like you can embark on a journey of taste, creativity, and discovery.
@@ -30,54 +27,81 @@ Get ready to unleash your culinary creativity, expand your taste buds, and have 
 **Note: Please visit our website or contact us for registration details, camp dates, and any specific requirements or inquiries you may have. We look forward to welcoming you to our Flavorsome Food Schools Summer Camp!**
 
 ## Website Overview:
+
 The Flavorsome Food School website (https://flavorsome-food-school.web.app/) is designed to showcase the diverse range of toys available for purchase. It features a visually appealing and responsive layout, ensuring a seamless experience across various devices.
+
 ## Homepage
+
 Upon landing on the homepage, visitors are greeted with a captivating banner slider that showcases featured different foods and special offers. The banner slider captures attention and creates an engaging first impression. The site's logo and navigation menu are strategically placed for easy access to different sections.
+
 ## Homepage second Section
+
 In the second section user seen the most popular classes which taken by instructors and where student enrolled mostly.
+
 ## Homepage third Section
+
 In the third section user seen the most popular instructors where student enrolled mostly.
+
 ## Homepage fourth Section
+
 In the fourth section user seen the our company brain whose are invisible worked for run this websites.
+
 ## Homepage fifth Section
+
 In the fifth section user seen the our company aggrement or commitement.
+
 ## Classes
+
 In the classes section Student see the all classes and also seen the available seats of each classes.
+
 ## Instructors
+
 In this page student also see the All instructors.
+
 ## DarkMode or LightMode
+
 This website completely enables DarkMode and LightMode.
 
 ## Login & Register
+
 If user not login or registered then he or she can not enrolled or can not select the classes after login he or she can select the class and after complete payment he can join the classes. By default user role is **student** if the admin want make this student to a **instructors** or **admin** then he can.
 
 ## Dashboard
+
 Based on the user roles, user seen completely 3 different Dashboard based on the roles.
 
 ## Sutdent Dashboard
+
 In the student can see which classes he or selected and also see the enrolled classes. When the student payment the class price then he or she can visit enrolled classes pages.
 
 ## Instructors Dashboard
+
 In the instructors dashboard instructors can add a classes and also if the changes needed then he or she can upated their own classes untill the admin **approved** that classes. After Admin approved the classes the no changes made that class in the Instructors end.
 
 ## Admin Dashboard
+
 In the admin dashboard, admin can manage the classes and also manage the users based on the roles. So here he admin has many power to change or update the certain users.
 
 ## Payment
+
 In the payment, here i user **Stripe Payment API** for testing purpose and i added successfully in this projects.
+
+## Payment History
+
+In the payment history, here user **Stripe Payment API** seen their posting payment which they made for buying the classes and it shown latest payment in the top
 
 ### The Flavorsome|Food Schools project utilizes the following packages and libraries to enhance its functionality and user experience:
 
-- React-Types: A library for animating text.
-- React Tanstack Query- For Data fethcing using React Tanstack Query.
-- Helmet: For changed the dynamically page title used.
-- Axios: A popular library for making HTTP requests from the browser.
-- Framer Motion: A powerful animation library for React and used the website for animation.
-- React Rating: A package for adding rating components to the website.
-- React Router DOM: A routing library for handling client-side navigation in React applications.
-- React Icons: A collection of popular icon libraries as React components.
-- React Marquee: A package for creating scrolling text or content in React applications.
-- React-Swipper Slider: For making the Slider Effect
+-   React-Types: A library for animating text.
+-   React Tanstack Query- For Data fethcing using React Tanstack Query.
+-   Helmet: For changed the dynamically page title used.
+-   Axios: A popular library for making HTTP requests from the browser.
+-   Framer Motion: A powerful animation library for React and used the website for animation.
+-   React Rating: A package for adding rating components to the website.
+-   React Router DOM: A routing library for handling client-side navigation in React applications.
+-   React Icons: A collection of popular icon libraries as React components.
+-   React Marquee: A package for creating scrolling text or content in React applications.
+-   React-Swipper Slider: For making the Slider Effect
 
 **Several Types of Packages Used in this Project**
 
@@ -103,8 +127,6 @@ JWT (JSON Web Tokens) is a standard for creating and verifying tokens that repre
 
 The advantages of using JWT include stateless authentication, scalability, and easy integration with various platforms and frameworks.
 
-
-
 ## Live Site Link
 
 You can visit the Live Site at [https://flavorsome-food-school.web.app/]
@@ -113,7 +135,7 @@ You can visit the Live Site at [https://flavorsome-food-school.web.app/]
 
 My name is Ujjal Kumar Roy and I recently graduated with a degree in Computer Science and Engineering. I am passionate about web development and love to build things that people can use. In my free time, I enjoy playing cricket and listening to music.
 
-- Facebook: [Ujjal Kumar Roy](https://www.facebook.com/ujjal.roy.7862/)
-- LinkedIn: [Ujjal Kumar Roy](https://www.linkedin.com/in/ujjal-kumar-roy/)
+-   Facebook: [Ujjal Kumar Roy](https://www.facebook.com/ujjal.roy.7862/)
+-   LinkedIn: [Ujjal Kumar Roy](https://www.linkedin.com/in/ujjal-kumar-roy/)
 
 If you have any feedback or suggestions for this project, feel free to contact me at ujjalroy7862@gmail.com

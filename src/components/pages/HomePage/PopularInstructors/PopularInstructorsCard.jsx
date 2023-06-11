@@ -9,7 +9,7 @@ const PopularInstructorsCard = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-        axios.get('http://localhost:8080/popular-instructors').then(({ data }) => {
+        axios.get('https://flavorsome-food-school-server.vercel.app/popular-instructors').then(({ data }) => {
             setLoading(false);
             return setClasses(data.data);
         });

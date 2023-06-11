@@ -83,7 +83,7 @@ function Register() {
                     title: 'Oops...',
                     text: 'User Successfully Registered and LoggedIn!!'
                 });
-                await axios.post('https://flavorsome-food-school-server.vercel.app/users', { name: user?.displayName, email: user?.email });
+                await axios.post('https://flavorsome-food-school-server.vercel.app/users', { name: user?.displayName, email: user?.email, image: user?.user?.photoURL });
                 navigate(from);
                 setIsLoading(false);
             }

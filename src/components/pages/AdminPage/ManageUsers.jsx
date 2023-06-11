@@ -91,7 +91,8 @@ const ManageUsers = () => {
                 <table className="table  table-zebra max-w-5xl mx-auto text-xl font-semibold text-center">
                     {/* head */}
                     <thead>
-                        <tr className="text-xl">
+                        <tr className="text-xl bg-green-400 text-white">
+                            <th>image</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role of the User</th>
@@ -104,6 +105,13 @@ const ManageUsers = () => {
                         {users &&
                             users.map((el) => (
                                 <tr key={el?._id}>
+                                    <td>
+                                        <div className="avatar">
+                                            <div className="w-24 mask mask-squircle">
+                                                <img src={el?.image} alt={el?.name} />
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{el?.name}</td>
                                     <td>{el?.email}</td>
                                     <td>{el?.role}</td>

@@ -19,7 +19,6 @@ const Navbar = () => {
     const [isStudent] = useStudent();
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
-    // const [selectedClass] = useSelectedClasses();
     const [theme, setTheme] = useState('light');
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', theme);

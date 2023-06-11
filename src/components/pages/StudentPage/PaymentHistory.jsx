@@ -40,7 +40,7 @@ const PaymentHistory = () => {
                     )}
                     <table className="table text-xl text-center">
                         {/* head */}
-                        <thead className="text-lg">
+                        <thead className="text-lg bg-green-500 text-white ">
                             <tr>
                                 <th />
                                 <th>Email</th>

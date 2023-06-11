@@ -8,19 +8,20 @@ import ManageClasses from '../components/pages/AdminPage/ManageClasses';
 import ManageUsers from '../components/pages/AdminPage/ManageUsers';
 import AllClasses from '../components/pages/HomePage/Classses/AllClasses';
 import Home from '../components/pages/HomePage/Home';
+import AllInstructors from '../components/pages/HomePage/Instructors/AllInstructors';
 import AddaClass from '../components/pages/InstructorPage/AddaClass';
 import MyClasses from '../components/pages/InstructorPage/MyClasses';
+import UpdateClass from '../components/pages/InstructorPage/UpdatePage';
 import Login from '../components/pages/Login&Register/Login';
 import RegisterPage from '../components/pages/Login&Register/RegisterPage';
 import MyEnrolledClasses from '../components/pages/StudentPage/MyEnrolledClasses';
 import MySelectedClasses from '../components/pages/StudentPage/MySelectedClasses';
 import PaymentDetails from '../components/pages/StudentPage/PaymentDetails';
+import PaymentHistory from '../components/pages/StudentPage/PaymentHistory';
 import AdminRoutes from './AdminRoutes';
 import InstructorRoutes from './InstructorRoutes';
 import PrivateRoutes from './PrivateRoute';
 import StudentRoutes from './StudentRoutes';
-import AllInstructors from '../components/pages/HomePage/Instructors/AllInstructors';
-import UpdateClass from '../components/pages/InstructorPage/UpdatePage';
 
 export const router = createBrowserRouter([
     {
@@ -72,6 +73,14 @@ export const router = createBrowserRouter([
                 element: (
                     <StudentRoutes>
                         <MyEnrolledClasses />
+                    </StudentRoutes>
+                )
+            },
+            {
+                path: '/dashboard/my-payment-history',
+                element: (
+                    <StudentRoutes>
+                        <PaymentHistory />
                     </StudentRoutes>
                 )
             },

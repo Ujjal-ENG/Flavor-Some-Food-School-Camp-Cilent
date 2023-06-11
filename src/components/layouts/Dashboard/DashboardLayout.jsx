@@ -8,7 +8,7 @@
 import React from 'react';
 import { BiSelectMultiple } from 'react-icons/bi';
 import { HiClipboardCheck } from 'react-icons/hi';
-import { MdManageAccounts, MdOutlineManageAccounts } from 'react-icons/md';
+import { MdManageAccounts, MdOutlineManageAccounts, MdWorkHistory } from 'react-icons/md';
 import { Link, Outlet, ScrollRestoration } from 'react-router-dom';
 import Typed from 'react-typed';
 import useAdmin from '../../../hooks/useAdmin';
@@ -82,6 +82,12 @@ const DashboardLayout = () => {
                                         <Link to="/dashboard/my-enrolled-classes" className="text-xl font-bold">
                                             <HiClipboardCheck size={24} />
                                             My Enrolled Classes
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/dashboard/my-payment-history" className="text-xl font-bold">
+                                            <MdWorkHistory size={24} />
+                                            Payment History
                                         </Link>
                                     </li>
                                 </>

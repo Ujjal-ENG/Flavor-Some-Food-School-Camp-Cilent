@@ -11,7 +11,7 @@ const AllInstructors = () => {
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         setLoading(true);
-        axios.get('https://flavorsome-food-school-server.vercel.app/all-instructors').then(({ data }) => {
+        axios.get('http://localhost:8080/all-instructors').then(({ data }) => {
             setLoading(false);
             return setAllInstructors(data.data);
         });

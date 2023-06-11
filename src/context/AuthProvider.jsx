@@ -42,7 +42,7 @@ function AuthProvider({ children }) {
     useEffect(() => {
         const unSubscriber = onAuthStateChanged(auth, async (user) => {
             if (user && user?.email) {
-                const { data } = await axios.post('https://flavorsome-food-school-server.vercel.app/jwt', { email: user?.email });
+                const { data } = await axios.post('http://localhost:8080/jwt', { email: user?.email });
                 localStorage.setItem('token', data.token);
             } else {
                 localStorage.removeItem('token');

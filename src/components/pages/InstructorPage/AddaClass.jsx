@@ -4,9 +4,9 @@
 /* eslint-disable react/jsx-indent-props */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable react/jsx-props-no-spreading */
-import axios from 'axios';
 import React, { useState } from 'react';
 
+import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { AiFillFileAdd } from 'react-icons/ai';
@@ -16,7 +16,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
 const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
-
+console.log(imgBBKEY);
 const AddaClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [loading, setIsLoading] = useState(false);
@@ -28,22 +28,29 @@ const AddaClass = () => {
         formState: { errors }
     } = useForm();
 
-    const imgHoistingUrl = `https://api.imgbb.com/1/upload?key=${imgBBKEY}`;
+    // const imgHoistingUrl = `https://api.imgbb.com/1/upload?key=${imgBBKEY}`;
     const onSubmit = async (data) => {
         try {
             setIsLoading(true);
-            const fromData = new FormData();
-
             const price = parseInt(data.price, 10);
             const availableSeats = parseInt(data.availableSeats, 10);
             data.price = price;
             data.availableSeats = availableSeats;
             data.status = 'pending';
-
+            console.log(data.image);
+            const fromData = new FormData();
             fromData.append('image', data.image[0]);
 
-            const res = await axios.post(imgHoistingUrl, fromData);
+            const res = await axios.post('https://api.imgbb.com/1/upload?key=217e4a7b8abfe51f2a79a5865e0b806a', fromData);
+
             console.log(res);
+            // fetch(`https://api.imgbb.com/1/upload?key=`, {
+            //     method: 'POST',
+            //     body: fromData
+            // })
+            //     .then((res) => res.json())
+            //     .then((data) => console.log(data));
+
             if (res) {
                 const imgURL = res.data.data.display_url;
                 data.image = imgURL;

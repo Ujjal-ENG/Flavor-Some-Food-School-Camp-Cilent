@@ -63,9 +63,9 @@ const MyClasses = () => {
                                         <h5 className="text-xl font-bold py-2">
                                             Total Enrolled Students: <span className="text-primary">{data?.enrolledStudents || 0}</span>
                                         </h5>
-                                        {data?.status === 'denied' && (
+                                        {(data?.status === 'denied' || data?.status === 'approved') && (
                                             <h5 className="text-xl font-bold py-2 text-red-500">
-                                                FeedBack: <span className="text-primary">{data?.feedback}</span>
+                                                FeedBack: <span className="text-primary">{data?.feedback || 'Everything is Okay!!'} </span>
                                             </h5>
                                         )}
                                     </div>

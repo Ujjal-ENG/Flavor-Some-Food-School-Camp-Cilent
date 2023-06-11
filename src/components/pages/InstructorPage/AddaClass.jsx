@@ -15,7 +15,7 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
-const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY1;
+const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
 
 const AddaClass = () => {
     const [axiosSecure] = useAxiosSecure();
@@ -43,8 +43,9 @@ const AddaClass = () => {
             fromData.append('image', data.image[0]);
 
             const res = await axios.post(imgHoistingUrl, fromData);
+            console.log(res);
             if (res) {
-                const imgURL = res?.data?.data?.display_url;
+                const imgURL = res.data.data.display_url;
                 data.image = imgURL;
                 const response = await axiosSecure.post('/classes', data);
                 if (response.data.success) {

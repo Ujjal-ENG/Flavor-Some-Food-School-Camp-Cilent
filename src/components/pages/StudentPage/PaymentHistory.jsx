@@ -8,6 +8,7 @@
 import { useQuery } from '@tanstack/react-query';
 import moment from 'moment';
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
@@ -27,6 +28,9 @@ const PaymentHistory = () => {
     return (
         <div>
             <SharedTitle title1="My  " title2="  Payment History" />
+            <Helmet>
+                <title>F|Food|School - My Payment History</title>
+            </Helmet>
             <div className="-ml-0 md:-ml-32">
                 <div className="overflow-x-auto">
                     {loading && (

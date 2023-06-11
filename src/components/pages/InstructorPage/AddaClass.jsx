@@ -6,7 +6,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 
-import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { AiFillFileAdd } from 'react-icons/ai';
@@ -15,11 +14,12 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
-const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
-console.log(imgBBKEY);
+// const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
+// console.log(imgBBKEY);
 const AddaClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [loading, setIsLoading] = useState(false);
+    const [isShown, setIsShown] = useState(false);
     const { userInfo } = useAuth();
     const {
         register,
@@ -37,13 +37,11 @@ const AddaClass = () => {
             data.price = price;
             data.availableSeats = availableSeats;
             data.status = 'pending';
-            console.log(data.image);
-            const fromData = new FormData();
-            fromData.append('image', data.image[0]);
 
-            const res = await axios.post('https://api.imgbb.com/1/upload?key=217e4a7b8abfe51f2a79a5865e0b806a', fromData);
-
-            console.log(res);
+            // const fromData = new FormData();
+            // fromData.append('image', data.image[0]);
+            // const res = await axios.post(imgHoistingUrl, fromData);
+            // console.log(res);
             // fetch(`https://api.imgbb.com/1/upload?key=`, {
             //     method: 'POST',
             //     body: fromData
@@ -51,18 +49,30 @@ const AddaClass = () => {
             //     .then((res) => res.json())
             //     .then((data) => console.log(data));
 
-            if (res) {
-                const imgURL = res.data.data.display_url;
-                data.image = imgURL;
-                const response = await axiosSecure.post('/classes', data);
-                if (response.data.success) {
-                    Swal.fire({
-                        icon: 'success',
-                        text: 'Classes added Successfully!!'
-                    });
-                    reset();
-                    setIsLoading(false);
-                }
+            // if (res) {
+            //     const imgURL = res.data.data.display_url;
+            //     setIsShown(true);
+            //     data.image = imgURL;
+            //     const response = await axiosSecure.post('/classes', data);
+            //     if (response.data.success) {
+            //         Swal.fire({
+            //             icon: 'success',
+            //             text: 'Classes added Successfully!!'
+            //         });
+            //         reset();
+            //         setIsLoading(false);
+            //         setIsShown(true);
+            //     }
+            // }
+            const response = await axiosSecure.post('/classes', data);
+            if (response.data.success) {
+                Swal.fire({
+                    icon: 'success',
+                    text: 'Classes added Successfully!!'
+                });
+                reset();
+                setIsLoading(false);
+                setIsShown(true);
             }
         } catch (error) {
             setIsLoading(false);
@@ -138,11 +148,11 @@ const AddaClass = () => {
                     </div>
                 </div>
 
-                <div>
+                <div className="w-full">
                     <label className="label">
-                        <span className="label-text font-bold text-black">Class Image*</span>
+                        <span className="label-text font-bold text-black">Image URL Link*</span>
                     </label>
-                    <input {...register('image', { required: true })} type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
+                    <input {...register('image', { required: true })} type="text" className="input input-bordered input-primary w-full max-w-3xl" required placeholder="put image link here" />
                 </div>
 
                 {loading ? (

@@ -16,7 +16,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
 const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
-console.log(imgBBKEY);
+
 const AddaClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [loading, setIsLoading] = useState(false);
@@ -39,10 +39,10 @@ const AddaClass = () => {
             data.status = 'pending';
             const imgHoistingUrl = `https://api.imgbb.com/1/upload?key=${imgBBKEY}`;
             const fromData = new FormData();
-            console.log(fromData);
+
             fromData.append('image', data.image[0]);
             const res = await axios.post(imgHoistingUrl, fromData);
-            console.log(res);
+
             // fetch(`https://api.imgbb.com/1/upload?key=`, {
             //     method: 'POST',
             //     body: fromData

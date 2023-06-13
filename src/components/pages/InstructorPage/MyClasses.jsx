@@ -31,11 +31,11 @@ const MyClasses = () => {
             <Helmet>
                 <title>F|Food|School - My Classes</title>
             </Helmet>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 -ml-0 md:-ml-32 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 -ml-0 md:-ml-32 py-10 pr-20">
                 {allClasses &&
                     allClasses.map((data) => {
                         return (
-                            <div key={data._id} className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow`}>
+                            <div key={data._id} className={`overflow-hidden ${data?.availableSeats === 0 ? 'bg-red-500' : 'bg-white'} rounded shadow-lg`}>
                                 <div className="p-5">
                                     <div className="relative">
                                         <a href="#" title="" className="block ">

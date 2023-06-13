@@ -31,7 +31,7 @@ const MyClasses = () => {
             <Helmet>
                 <title>F|Food|School - My Classes</title>
             </Helmet>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-7 -ml-0 md:-ml-60 py-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-7 -ml-0 md:-ml-32 py-10">
                 {allClasses &&
                     allClasses.map((data) => {
                         return (

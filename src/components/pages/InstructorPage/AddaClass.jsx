@@ -6,6 +6,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React, { useState } from 'react';
 
+import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 import { useForm } from 'react-hook-form';
 import { AiFillFileAdd } from 'react-icons/ai';
@@ -14,8 +15,8 @@ import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import SharedTitle from '../../layouts/shared/SharedTitle';
 
-// const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
-// console.log(imgBBKEY);
+const imgBBKEY = import.meta.env.VITE_IMGBB_SECRET_KEY;
+console.log(imgBBKEY);
 const AddaClass = () => {
     const [axiosSecure] = useAxiosSecure();
     const [loading, setIsLoading] = useState(false);
@@ -28,7 +29,6 @@ const AddaClass = () => {
         formState: { errors }
     } = useForm();
 
-    // const imgHoistingUrl = `https://api.imgbb.com/1/upload?key=${imgBBKEY}`;
     const onSubmit = async (data) => {
         try {
             setIsLoading(true);
@@ -37,11 +37,12 @@ const AddaClass = () => {
             data.price = price;
             data.availableSeats = availableSeats;
             data.status = 'pending';
-
-            // const fromData = new FormData();
-            // fromData.append('image', data.image[0]);
-            // const res = await axios.post(imgHoistingUrl, fromData);
-            // console.log(res);
+            const imgHoistingUrl = `https://api.imgbb.com/1/upload?key=${imgBBKEY}`;
+            const fromData = new FormData();
+            console.log(fromData);
+            fromData.append('image', data.image[0]);
+            const res = await axios.post(imgHoistingUrl, fromData);
+            console.log(res);
             // fetch(`https://api.imgbb.com/1/upload?key=`, {
             //     method: 'POST',
             //     body: fromData
@@ -49,31 +50,31 @@ const AddaClass = () => {
             //     .then((res) => res.json())
             //     .then((data) => console.log(data));
 
-            // if (res) {
-            //     const imgURL = res.data.data.display_url;
-            //     setIsShown(true);
-            //     data.image = imgURL;
-            //     const response = await axiosSecure.post('/classes', data);
-            //     if (response.data.success) {
-            //         Swal.fire({
-            //             icon: 'success',
-            //             text: 'Classes added Successfully!!'
-            //         });
-            //         reset();
-            //         setIsLoading(false);
-            //         setIsShown(true);
-            //     }
-            // }
-            const response = await axiosSecure.post('/classes', data);
-            if (response.data.success) {
-                Swal.fire({
-                    icon: 'success',
-                    text: 'Classes added Successfully!!'
-                });
-                reset();
-                setIsLoading(false);
+            if (res) {
+                const imgURL = res.data.data.display_url;
                 setIsShown(true);
+                data.image = imgURL;
+                const response = await axiosSecure.post('/classes', data);
+                if (response.data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        text: 'Classes added Successfully!!'
+                    });
+                    reset();
+                    setIsLoading(false);
+                    setIsShown(true);
+                }
             }
+            // const response = await axiosSecure.post('/classes', data);
+            // if (response.data.success) {
+            //     Swal.fire({
+            //         icon: 'success',
+            //         text: 'Classes added Successfully!!'
+            //     });
+            //     reset();
+            //     setIsLoading(false);
+            //     setIsShown(true);
+            // }
         } catch (error) {
             setIsLoading(false);
             console.log(error);
@@ -150,9 +151,9 @@ const AddaClass = () => {
 
                 <div className="w-full">
                     <label className="label">
-                        <span className="label-text font-bold text-black">Image URL Link*</span>
+                        <span className="label-text font-bold text-black">Image*</span>
                     </label>
-                    <input {...register('image', { required: true })} type="text" className="input input-bordered input-primary w-full max-w-3xl" required placeholder="put image link here" />
+                    <input {...register('image', { required: true })} type="file" className="file-input file-input-bordered file-input-primary w-full max-w-xs" />
                 </div>
 
                 {loading ? (

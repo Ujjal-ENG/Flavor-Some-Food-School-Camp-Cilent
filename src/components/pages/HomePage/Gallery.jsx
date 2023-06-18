@@ -17,8 +17,8 @@ const Gallery = () => {
                             selfies heirloom.
                         </p>
                     </div>
-                    <div className="flex flex-wrap md:-m-2 -m-1">
-                        <div data-aos="fade-up" className="flex flex-wrap w-1/2">
+                    <div className="flex flex-wrap md:-m-2 -m-1 cursor-grab">
+                        <div data-aos="fade-up" className="flex flex-wrap w-1/2 ">
                             <Tilt className="md:p-2 p-1 w-1/2">
                                 <div className="group relative w-full h-full">
                                     <img
@@ -147,7 +147,7 @@ const Gallery = () => {
                             </Tilt>
                         </div>
 
-                        <div data-aos="fade-down" className="flex flex-wrap w-1/2">
+                        <div data-aos="fade-down" className="flex flex-wrap w-1/2 cursor-grab">
                             <Tilt className="md:p-2 p-1 w-full">
                                 <div className="group relative w-full h-full hover:shadow-xl">
                                     <img

@@ -7,9 +7,9 @@ const ExtracSections2 = () => {
         <div>
             <section className="py-10  sm:py-16 lg:py-24">
                 <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-                    <div className="max-w-2xl mx-auto text-center">
+                    <div className="max-w-6xl mx-auto text-center">
                         <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Meet the brains</h2>
-                        <p className="max-w-2xl font-bold tracking-wider mx-auto mt-4 text-base leading-relaxed text-gray-600">
+                        <p className="max-w-2xl font-bold tracking-wider mx-auto mt-4 text-base leading-relaxed text-gray-600 w-full">
                             At Flavorsome Food Camp School, we believe that culinary education goes beyond mastering recipes and techniques. It's about nurturing young minds and cultivating a passion
                             for the art of cooking. That's why we are excited to introduce our esteemed team of culinary experts, the "Meet the Brains" program!
                         </p>

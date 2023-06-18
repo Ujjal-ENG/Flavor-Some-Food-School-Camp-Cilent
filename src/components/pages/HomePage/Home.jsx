@@ -5,6 +5,7 @@ import React from 'react';
 import AnimateSection from './AnimateSection';
 import ExtraSections1 from './ExtraSections/ExtraSections1';
 import ExtracSections2 from './ExtraSections/ExtracSections2';
+import Gallery from './Gallery';
 import Header from './Header';
 import PopularClass from './PopularClass/PopularClass';
 import PopularInstructor from './PopularInstructors/PopularInstructor';
@@ -23,6 +24,7 @@ const Home = () => {
             <AnimateSection>
                 <PopularInstructor />
             </AnimateSection>
+            <Gallery />
             <AnimateSection>
                 <ExtracSections2 />
             </AnimateSection>

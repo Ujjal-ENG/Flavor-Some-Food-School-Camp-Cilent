@@ -9,8 +9,8 @@ const ExtraSections1 = () => {
         <div>
             <section className="pt-10  sm:pt-16 lg:pt-24">
                 <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
-                    <div className="max-w-2xl mx-auto text-center">
-                        <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl lg:leading-tight">
+                    <div className="max-w-5xl mx-auto text-center">
+                        <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl lg:leading-tight w-full">
                             In our Flavorsome Food Camp, we are also offer how collaboratively work with team as Team Members
                         </h2>
                         <p className="mt-6 text-lg text-red-500 font-bold">If you have any confusion with our food camp school please contract our Support.</p>

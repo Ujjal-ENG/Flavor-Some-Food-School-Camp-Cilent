@@ -21,7 +21,7 @@ const InstructorCard = ({ data }) => {
                     restDelta: 0.001
                 }
             }}>
-            <div className="overflow-hidden bg-white rounded shadow duration-300 transition-all ease-in-out hover:shadow-2xl">
+            <div className="overflow-hidden card1 bg-white rounded shadow duration-300 transition-all ease-in-out hover:shadow-2xl">
                 <div className="p-5">
                     <div className="relative">
                         <a href="#" title="" className="block ">

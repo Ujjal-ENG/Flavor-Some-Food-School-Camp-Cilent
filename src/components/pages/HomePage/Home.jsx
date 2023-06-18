@@ -14,7 +14,9 @@ const Home = () => {
     return (
         <div>
             <Header />
-            <Slider />
+            <div data-aos="fade-up">
+                <Slider />
+            </div>
             <AnimateSection>
                 <PopularClass />
             </AnimateSection>

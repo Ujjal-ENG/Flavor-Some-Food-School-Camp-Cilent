@@ -3,6 +3,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/jsx-indent-props */
 import React from 'react';
+import Tilt from 'react-parallax-tilt';
 
 const Gallery = () => {
     return (
@@ -18,7 +19,7 @@ const Gallery = () => {
                     </div>
                     <div className="flex flex-wrap md:-m-2 -m-1">
                         <div data-aos="fade-up" className="flex flex-wrap w-1/2">
-                            <div className="md:p-2 p-1 w-1/2">
+                            <Tilt className="md:p-2 p-1 w-1/2">
                                 <div className="group relative w-full h-full">
                                     <img
                                         alt="gallery"
@@ -58,8 +59,8 @@ const Gallery = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="md:p-2 p-1 w-1/2">
+                            </Tilt>
+                            <Tilt className="md:p-2 p-1 w-1/2">
                                 <div className="group relative w-full h-full">
                                     <img
                                         alt="gallery"
@@ -100,8 +101,8 @@ const Gallery = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="md:p-2 p-1 w-full">
+                            </Tilt>
+                            <Tilt className="md:p-2 p-1 w-full">
                                 <div className="group relative w-full h-full">
                                     <img
                                         alt="gallery"
@@ -143,11 +144,11 @@ const Gallery = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Tilt>
                         </div>
 
                         <div data-aos="fade-down" className="flex flex-wrap w-1/2">
-                            <div className="md:p-2 p-1 w-full">
+                            <Tilt className="md:p-2 p-1 w-full">
                                 <div className="group relative w-full h-full hover:shadow-xl">
                                     <img
                                         alt="gallery"
@@ -190,9 +191,9 @@ const Gallery = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Tilt>
 
-                            <div className="md:p-2 p-1 w-1/2">
+                            <Tilt className="md:p-2 p-1 w-1/2">
                                 <div className="group relative w-full h-full">
                                     <img
                                         alt="gallery"
@@ -232,8 +233,8 @@ const Gallery = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="md:p-2 p-1 w-1/2">
+                            </Tilt>
+                            <Tilt className="md:p-2 p-1 w-1/2">
                                 <div className="group relative w-full h-full">
                                     <img
                                         alt="gallery"
@@ -273,7 +274,7 @@ const Gallery = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Tilt>
                         </div>
                     </div>
                 </div>

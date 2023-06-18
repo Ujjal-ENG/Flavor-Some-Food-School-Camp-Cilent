@@ -1,4 +1,6 @@
 /* eslint-disable comma-dangle */
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import React, { useEffect, useState } from 'react';
 import Lottie from 'react-lottie';
 import { Outlet, ScrollRestoration } from 'react-router-dom';
@@ -15,6 +17,16 @@ const App = () => {
             preserveAspectRatio: 'xMidYMid slice'
         }
     };
+
+    useEffect(() => {
+        AOS.init({
+            offset: 200,
+            duration: 600,
+            easing: 'ease-in-sine',
+            delay: 100
+        });
+    }, []);
+
     const [isLoading, setIsLoading] = useState(document.readyState !== 'complete');
 
     useEffect(() => {

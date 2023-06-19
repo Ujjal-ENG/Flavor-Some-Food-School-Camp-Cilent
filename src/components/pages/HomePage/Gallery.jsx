@@ -26,7 +26,7 @@ const Gallery = () => {
                                         className="w-full object-cover h-full object-center block"
                                         src="https://images.pexels.com/photos/6743248/pexels-photo-6743248.jpeg?auto=compress&cs=tinysrgb&w=600https://images.pexels.com/photos/6743248/pexels-photo-6743248.jpeg?auto=compress&cs=tinysrgb&w=600"
                                     />
-                                    <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="absolute hidden md:flex inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300  items-center justify-center opacity-0 group-hover:opacity-100">
                                         <div className="px-10 text-center">
                                             <h3 className="text-3xl font-bold text-white mb-2">Baking and Pastry</h3>
                                             <p className="text-xl tracking-wider text-white">
@@ -67,7 +67,7 @@ const Gallery = () => {
                                         className="w-full object-cover h-full object-center block"
                                         src="https://images.pexels.com/photos/6758634/pexels-photo-6758634.jpeg?auto=compress&cs=tinysrgb&w=600"
                                     />
-                                    <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="absolute hidden md:flex inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300  items-center justify-center opacity-0 group-hover:opacity-100">
                                         <div className="px-10 text-center">
                                             <h3 className="text-3xl font-bold text-white mb-2">Safety and hygiene are our utmost priority.</h3>
                                             <p className="text-xl tracking-wider text-white">
@@ -109,7 +109,7 @@ const Gallery = () => {
                                         className="w-full object-cover h-full object-center block"
                                         src="https://images.pexels.com/photos/8033812/pexels-photo-8033812.jpeg?auto=compress&cs=tinysrgb&w=600"
                                     />
-                                    <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="absolute hidden md:flex inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 items-center justify-center opacity-0 group-hover:opacity-100">
                                         <div className="px-10 text-center">
                                             <h3 className="text-3xl font-bold text-white mb-2">Team work Experiences</h3>
                                             <p className="text-xl tracking-wider text-white">
@@ -155,7 +155,7 @@ const Gallery = () => {
                                         className="w-full h-full object-cover object-center block"
                                         src="https://images.pexels.com/photos/8035107/pexels-photo-8035107.jpeg?auto=compress&cs=tinysrgb&w=600"
                                     />
-                                    <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="absolute inset-0 hidden md:flex bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 items-center justify-center opacity-0 group-hover:opacity-100">
                                         <div className="flex justify-center items-center flex-col px-20">
                                             <h3 className="text-3xl font-bold text-white mb-2">Global Gastronomy</h3>
                                             <p className="text-xl tracking-wider text-white">
@@ -200,7 +200,7 @@ const Gallery = () => {
                                         className="w-full object-cover h-full object-center block"
                                         src="https://images.pexels.com/photos/6482320/pexels-photo-6482320.jpeg?auto=compress&cs=tinysrgb&w=600"
                                     />
-                                    <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="absolute inset-0 hidden md:flex bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 items-center justify-center opacity-0 group-hover:opacity-100">
                                         <div className="px-10">
                                             <h3 className="text-3xl font-bold text-white mb-2">Farm-to-Table Experience</h3>
                                             <p className="text-xl tracking-wider text-white">
@@ -241,7 +241,7 @@ const Gallery = () => {
                                         className="w-full object-cover h-full object-center block"
                                         src="https://images.pexels.com/photos/8082787/pexels-photo-8082787.jpeg?auto=compress&cs=tinysrgb&w=600"
                                     />
-                                    <div className="absolute inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                                    <div className="absolute hidden md:flex inset-0 bg-gray-900 bg-opacity-0 group-hover:bg-opacity-70 transition-opacity duration-300 items-center justify-center opacity-0 group-hover:opacity-100">
                                         <div className="px-10">
                                             <h3 className="text-3xl font-bold text-white mb-2">Food Science and Nutrition</h3>
                                             <p className="text-xl tracking-wider text-white">

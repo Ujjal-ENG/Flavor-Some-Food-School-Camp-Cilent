@@ -9288,6 +9288,11 @@ react-parallax-tilt@^1.7.147:
   resolved "https://registry.yarnpkg.com/react-parallax-tilt/-/react-parallax-tilt-1.7.147.tgz#3674bd0ec0b86d0837d20572eedf815c4286417f"
   integrity sha512-7W8IOOEE+6ZnPGZIV3YywDA9Zg3LvP1j/H8GELqUVaUqqIJ/hpWXcMKuo8e3gYh/1ueKb0vYO3KwkYtpG8AxPw==
 
+react-parallax@^3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/react-parallax/-/react-parallax-3.5.1.tgz#73071679371b7738e21ffac8daa0bc3cb7e5174d"
+  integrity sha512-p5zPsPsqELlIOGaPS01O0IRx8R2bxcBAtrdF/RHf9nIxxk5hijbM2y89tk4rJQBcNH6ESSLe7J2NV4/ms7FLFw==
+
 react-refresh@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.11.0.tgz#77198b944733f0f1f1a90e791de4541f9f074046"
